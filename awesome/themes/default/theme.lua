@@ -6,20 +6,20 @@ theme = {}
 
 theme.font          = "Liberation Sans 10"
 
-theme.bg_normal     = "#2d2d2d"
+theme.bg_normal     = "#232830"
 theme.bg_focus      = "#2e64fe"
-theme.bg_urgent     = "#ff0000"
+theme.bg_urgent     = "#bf616a"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#a7adba"
 theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#bf616a"
+theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.border_width  = 2
 theme.border_focus = "#2e64fe"
-theme.border_normal  = "#2d2d2d"
+theme.border_normal  = "#232830"
 theme.border_marked = "#dca432"
 
 theme.useless_gap_width = 15
