@@ -1,0 +1,15 @@
+#!/bin/bash
+export $(dbus-launch)
+
+if [ -n "$INSIDE_EMACS" ]; then
+    export TERM=Eterm-256color
+else
+    export TERM=xterm-256color
+fi
+#export TERM=xterm-256color
+export WINEPREFIX=~/.wine
+export WINEARCH=win32
+export EDITOR='emacsclient -t'
+export DIFFPROG='meld'
+export PATH=$PATH:/home/sejo/.gem/ruby/2.2.0/bin 
+export SWT_GTK3=1
