@@ -25,6 +25,7 @@ local tools = {
     },
     editor = {
     },
+    email = "thunderbird",
 }
 
 tools.browser.primary = os.getenv("BROWSER") or "firefox"
@@ -295,23 +296,34 @@ globalkeys = awful.util.table.join(
     -- Focus 
     awful.key({ modkey,           }, "j",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "k",  awful.tag.viewnext       ),
-    awful.key({ modkey,           }, "Up", function () awful.screen.focus(2) end),
-    awful.key({ modkey,           }, "Down", function () awful.screen.focus(1) end),
+    awful.key({ modkey,           }, "o", function () awful.screen.focus_relative(1) end),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
     awful.key({ modkey,          }, "w", function () mymainmenu:show() end),
     
     awful.key({ modkey,          }, "Right",
         function ()
-            awful.client.focus.byidx( 1)
+            awful.client.focus.bydirection("right")
             if client.focus then client.focus:raise() end
     end),
     
     awful.key({ modkey,          }, "Left",
         function ()
-            awful.client.focus.byidx(-1)
+            awful.client.focus.bydirection("left")
             if client.focus then client.focus:raise() end
     end),
-
+    
+    awful.key({ modkey,          }, "Up",
+       function ()
+	  awful.client.focus.bydirection("up")
+	  if client.focus then client.focus:raise() end
+    end),
+	
+    awful.key({ modkey,          }, "Down",
+       function ()
+	  awful.client.focus.bydirection("down")
+	  if client.focus then client.focus:raise() end
+    end),
+    
     -- Multiscreen support
     awful.key({ modkey, "Control"   }, "Right",
        function()
@@ -376,7 +388,15 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     awful.key({ modkey },            "r", function () mypromptbox[mouse.screen]:run() end),
-    awful.key({ modkey },            "d", function () awful.util.spawn("dmenu_run") end),
+
+    awful.key({ modkey },            "d",
+              function ()
+		 awful.util.spawn("dmenu_run -i -p 'Run command:' -nb '" .. 
+				       beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
+				       "' -sb '" .. beautiful.bg_focus .. 
+				       "' -sf '" .. beautiful.fg_focus .. "'") 
+    end),
+    
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
@@ -413,7 +433,7 @@ globalkeys = awful.util.table.join(
     end),
     
     awful.key({ modkey, "Control" }, "m", function ()
-        awful.util.spawn(tools.mail)
+        awful.util.spawn(tools.email)
     end),
     
     awful.key({ modkey, "Control" }, "s", function ()
@@ -432,7 +452,7 @@ globalkeys = awful.util.table.join(
     
     
     awful.key({}, "XF86AudioPrev", function ()
-        awful.util.spawn("playerctl prev")
+        awful.util.spawn("playerctl previous")
     end),
     
     awful.key({}, "XF86AudioNext", function ()
@@ -440,7 +460,7 @@ globalkeys = awful.util.table.join(
     end),
     
     awful.key({}, "XF86AudioPlay", function ()
-        awful.util.spawn("playerctl toggle")
+        awful.util.spawn("playerctl play-pause")
     end),
     
     awful.key({}, "XF86AudioStop", function ()
@@ -655,7 +675,8 @@ function run_once(prg,arg_string,pname,screen)
           awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
        end
 end
-
+run_once("/usr/lib/gnome-settings-daemon/gnome-settings-daemon")
+run_once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 run_once("compton", " -b")
 run_once("conky")
 run_once("dunst", " -config /home/sejo/.dunstrc")
