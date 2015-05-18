@@ -4,25 +4,39 @@
 
 theme = {}
 
-theme.font          = "Liberation Sans 10"
+theme.font              = "Liberation Sans 10"
+		        
+theme.bg_normal         = "#232830"
+theme.bg_focus          = "#2e64fe"
+theme.bg_urgent         = "#bf616a"
+theme.bg_minimize       = "#444444"
+theme.bg_systray        = theme.bg_normal
+theme.bg_graph          = "#4f5b67"
+		        
+theme.fg_normal         = "#a7adba"
+theme.fg_focus          = "#ffffff"
+theme.fg_urgent         = "#ffffff"
+theme.fg_minimize       = "#ffffff"
 
-theme.bg_normal     = "#232830"
-theme.bg_focus      = "#2e64fe"
-theme.bg_urgent     = "#bf616a"
-theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
-
-theme.fg_normal     = "#a7adba"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
-
-theme.border_width  = 2
-theme.border_focus = "#2e64fe"
-theme.border_normal  = "#232830"
-theme.border_marked = "#dca432"
+theme.border_width      = 2
+theme.border_focus      = "#2e64fe"
+theme.border_normal     = "#232830"
+theme.border_marked     = "#dca432"
 
 theme.useless_gap_width = 15
+
+-- Color palette
+theme.white             = "#ffffff"
+theme.black             = "#232830"
+theme.red		= "#bf616a"
+theme.orange		= "#DCA432"
+theme.yellow		= "#ebcb8b"
+theme.green		= "#B4EB89"
+theme.aqua		= "#89EBCA"
+theme.blue		= "#89AAEB"
+theme.purple		= "#C189EB"
+
+theme.separator         = "#C189EB"
 
 -- There are other variable sets
 -- overriding the default one when

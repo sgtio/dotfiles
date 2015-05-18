@@ -15,9 +15,13 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 -- Extra Layouts
 local lain = require("lain")
+-- Vicious widgets
+local vicious = require("vicious")
+-- Weather library
+local weather = require("modules/weather")
 -- Utilities and System default definition
 local tools = {
-    terminal = "urxvt",
+    terminal = "urxvtc",
     system = {
         filemanager = "thunar",
     },
@@ -33,6 +37,16 @@ tools.browser.secondary = ({chromium="firefox", firefox="chromium"})[tools.brows
 tools.editor.primary = os.getenv("EDITOR") or "emacs"
 tools.editor.secondary = ({emacs="gvim", gvim="emacs"})[tools.editor.primary]
 
+-- Paths
+local paths = {}
+paths.home = os.getenv("HOME") .. "/"
+paths.dotfiles = paths.home .. ".config/dotfiles/"
+paths.scripts = paths.dotfiles .. "scripts/"
+paths.dunst = paths.dotfiles .. "dunst/"
+paths.awesome = {
+   default = paths.dotfiles .. "awesome/",
+   themes = paths.dotfiles .. "awesome/themes/", 
+}
 -- customization
 customization = {}
 customization.config = {}
@@ -42,8 +56,7 @@ customization.default = {}
 customization.option = {}
 customization.timer = {}
 
-customization.config.version = "1.5.9"
-customization.config.help_url = "https://github.com/pw4ever/awesome-wm-config/tree/" .. customization.config.version
+customization.config.version = "1.0.0"
 
 customization.default.property = {
     layout = awful.layout.suit.floating,
@@ -88,10 +101,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/themes/default/theme.lua")
+beautiful.init(paths.awesome.themes .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt -e bash -c 'tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME'"
+terminal = "urxvtc -e bash -c 'tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME'"
 editor = os.getenv("EDITOR") or "emacs"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -147,15 +160,15 @@ tags = {
       ':External',
    },
    layout = {
-      layouts[5],   -- 1:Web
-      layouts[5],  -- 2:Term
+      layouts[2],   -- 1:Web
+      layouts[2],  -- 2:Term
       layouts[2],  -- 3:IDE
-      layouts[5],  -- 4:Files
+      layouts[2],  -- 4:Files
       layouts[2],   -- 5:Office
-      layouts[5],  -- 6:Mail
-      layouts[5],  -- 7:Multimedia
+      layouts[2],  -- 6:Mail
+      layouts[2],  -- 7:Multimedia
       layouts[1],   -- 8:Float
-      layouts[5],  -- 9:External
+      layouts[2],  -- 9:External
    }
 }
 for s = 1, screen.count() do
@@ -173,8 +186,9 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.arch_icon },
-                                    { "open terminal", terminal }
+mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.arch_icon },
+			     { "Open Terminal", terminal },
+			     { "Log Out" , function () awful.util.spawn(paths.scripts .. "haltdialog.sh") end},
                                   }
                         })
 
@@ -185,9 +199,115 @@ mylauncher = awful.widget.launcher({ image = beautiful.arch_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- {{{ Vicious
+
+-- Separator definition
+local separator = '<span color="' .. beautiful.separator .. '"> | </span>'
+
+-- RAM widget
+memwidget = wibox.widget.textbox()
+vicious.cache(vicious.widgets.mem)
+vicious.register(memwidget, vicious.widgets.mem,
+		 function(widget, args)
+		    memtext = ''
+		    if args[1] < 40 then
+		       memtext = string.format('<span color="%s"> : %d%% (%dMB/%dMB) </span>',
+					    beautiful.green, args[1], args[2], args[3])
+		    elseif args[1] < 70 then
+		       memtext = string.format('<span color="%s"> : %d%% (%dMB/%dMB) </span>', beautiful.yellow, args[1], args[2], args[3])
+		    else
+		       memtext = string.format('<span color="%s"> : %d%% (%dMB/%dMB) </span>', beautiful.red, args[1], args[2], args[3])
+		    end
+		    return separator .. memtext .. separator
+		 end,
+		 13)	    
+
+-- CPU usage
+cputextwidget = wibox.widget.textbox()
+cpuwidget = awful.widget.graph()
+cpuwidget:set_width(50)
+cpuwidget:set_background_color("#4f5b67")
+cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 0, 25 },
+			  stops = { { 0, "" .. beautiful.red .. ""},
+			     { 0.5, "" .. beautiful.yellow .. "" },
+			     { 1, "" .. beautiful.green .. "" }
+}})
+
+vicious.cache(vicious.widgets.cpu)
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 3)
+vicious.register(cputextwidget, vicious.widgets.cpu,
+		 function(widget, args)
+		    cputext = ''
+		    if args[1] < 33 then
+		       cputext = string.format('<span color="%s"> : %d%% </span>', beautiful.green, args[1])
+		    elseif args[1] < 66 then
+		       cputext = string.format('<span color="%s"> : %d%% </span>', beautiful.yellow, args[1])
+		    else
+		       cputext = string.format('<span color="%s"> : %d%% </span>', beautiful.red, args[1])
+		    end
+		    return separator .. cputext
+		 end,
+		 3)
+-- Disk Usage
+iowidget = wibox.widget.textbox()
+iographwidget = awful.widget.graph()
+iographwidget:set_max_value(225)
+iographwidget:set_width(50)
+iographwidget:set_background_color("" .. beautiful.bg_graph .. "")
+iographwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 0, 25 },
+			  stops = { { 0, "" .. beautiful.red .. ""},
+			     { 0.5, "" .. beautiful.yellow .. "" },
+			     { 1, "" .. beautiful.green .. "" }
+}})
+
+vicious.cache(vicious.widgets.dio)
+vicious.register(iowidget, vicious.widgets.dio,
+		 function(widget, args)
+		    disktext = ''
+		    if tonumber(args["{sda total_mb}"]) < 3 then
+		       disktext = string.format('<span color="%s"> : %sMB </span>', beautiful.green, args["{sda total_mb}"])
+		    elseif tonumber(args["{sda total_mb}"]) < 10 then
+		       disktext =  string.format('<span color="%s"> : %sMB </span>', beautiful.yellow, args["{sda total_mb}"])
+		    else
+		       disktext =  string.format('<span color="%s"> : %sMB </span>', beautiful.red, args["{sda total_mb}"])
+		    end
+		    return separator .. disktext
+		 end,
+		 3)
+vicious.register(iographwidget, vicious.widgets.dio, "${sda total_kb}", 3)
+-- CPU Temperature
+cputempwidget = wibox.widget.textbox()
+vicious.cache(vicious.widgets.thermal)
+vicious.register(cputempwidget, vicious.widgets.thermal,
+		 function(widget, args)
+		    temptext = ''
+		    if args[1] < 50 then
+		       temptext =  string.format('<span color="%s"> : %dCº </span>', beautiful.green, args[1])
+		    elseif args[1] < 75 then
+		       temptext = string.format('<span color="%s"> : %dCº </span>', beautiful.yellow, args[1])
+		    else
+		       temptext = string.format('<span color="%s"> : %dCº </span>', beautiful.red, args[1])
+		    end
+		    return temptext .. separator
+		 end,
+		 10, "thermal_zone0")
+
+-- Music
+
+-- Weather
+weatherwidget = wibox.widget.textbox()
+vicious.cache(vicious.widgets.weather)
+vicious.register(weatherwidget, vicious.widgets.weather,
+		 function(widget, args)
+		    return weather.getWeather(paths)
+		 end,
+		 300, 'ESMS')
+
+--}}}
+
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+mytextclock = awful.widget.textclock(': %a %b %d, %H:%M ' .. separator)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -268,6 +388,13 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
+    right_layout:add(weatherwidget)
+    right_layout:add(cputextwidget)
+    right_layout:add(cpuwidget)
+    right_layout:add(iowidget)
+    right_layout:add(iographwidget)
+    right_layout:add(memwidget)
+    right_layout:add(cputempwidget)
     right_layout:add(mytextclock)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mylayoutbox[s])
@@ -298,9 +425,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "k",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "o", function () awful.screen.focus_relative(1) end),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-    awful.key({ modkey,          }, "w", function () mymainmenu:show() end),
+    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
     
-    awful.key({ modkey,          }, "Right",
+    awful.key({ modkey,           }, "Right",
         function ()
             awful.client.focus.bydirection("right")
             if client.focus then client.focus:raise() end
@@ -327,7 +454,7 @@ globalkeys = awful.util.table.join(
     -- Multiscreen support
     awful.key({ modkey, "Control"   }, "Right",
        function()
-	  awful.util.spawn("/home/sejo/.config/dotfiles/scripts/multiscreen.sh -rc")
+	  awful.util.spawn(paths.scripts .. "multiscreen.sh -rc")
 	  if beautiful.wallpaper then
 	     for s = 1, screen.count() do
 		gears.wallpaper.fit(beautiful.wallpaper, s, "#3c352f")
@@ -337,7 +464,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control"   }, "Left",
        function()
-	  awful.util.spawn("/home/sejo/.config/dotfiles/scripts/multiscreen.sh -lc")
+	  awful.util.spawn(paths.scripts .. "multiscreen.sh -lc")
 	  if beautiful.wallpaper then
 	     for s = 1, screen.count() do
 		gears.wallpaper.fit(beautiful.wallpaper, s, "#3c352f")
@@ -347,7 +474,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control"   }, "Down",
        function()
-	  awful.util.spawn("/home/sejo/.config/dotfiles/scripts/multiscreen.sh -sc")
+	  awful.util.spawn(paths.scripts .. "multiscreen.sh -sc")
 	  if beautiful.wallpaper then
 	     for s = 1, screen.count() do
 		gears.wallpaper.fit(beautiful.wallpaper, s, "#3c352f")
@@ -371,7 +498,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Shift"   }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "e", awesome.quit),
+    awful.key({ modkey, "Shift"   }, "e", function () awful.util.spawn(paths.scripts .. "haltdialog.sh") end),
 
     awful.key({ modkey, "Shift"   }, "Right",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey, "Shift"   }, "Left",     function () awful.tag.incmwfact(-0.05)    end),
@@ -408,8 +535,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end),
     --- admin
 
-    awful.key({ modkey, "Control" }, "l", function ()
-        awful.util.spawn("xscreensaver-command -l")
+    awful.key({ modkey, "Shift" }, "l", function ()
+        awful.util.spawn(paths.scripts .. "lock.sh")
     end),
     
     
@@ -571,15 +698,44 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+    
     { rule = { class = "MPlayer" },
-      properties = { floating = true } },
+      properties = {
+	 floating = true,
+	 opacity = 1,
+      }
+    },
+    
     { rule = { class = "pinentry" },
       properties = { floating = true } },
-    { rule = { class = "gimp" },
+    { rule = { class = "Gimp" },
       properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Plugin-container" },
+        properties = { floating = true } },
+    -- Set Firefox to always map on tags number 1 of screen 1.
+    { rule_any = { class = { "Firefox", "Chromium" } },
+      properties = { tag = tags[1][1] } },
+
+    { rule_any = { class = { "URxvt", "Gnome-terminal", "XTerm" } },
+      properties = { tag = tags[1][2] } },
+
+    { rule_any = { class = { "Emacs", "Gvim", "Gedit", "Mousepad", "Eclipse", "Netbeans", "RStudio-bin" } },
+      properties = { tag = tags[1][3] } },
+    
+    { rule_any = { class = { "Files", "Thunar", "Konkeror" } },
+      properties = { tag = tags[1][4] } },
+
+    { rule_any = { class = { "TeXstudio" }, instance = { "libreoffice" } },
+      properties = { tag = tags[1][5] } },
+
+    { rule_any = { class = { "Thunderbird", "Pidgin", "Evolution" } },
+      properties = { tag = tags[1][6] } },
+
+    { rule_any = { class = { "Spotify", "Banshee", "Rhythmbox", "Clementine", "Audacious", "Vlc", "MPlayer" } },
+      properties = { tag = tags[1][7] } },
+
+    { rule_any = { class = { "Gimp" } },
+      properties = { tag = tags[1][8] } },
 }
 -- }}}
 
@@ -679,11 +835,13 @@ run_once("/usr/lib/gnome-settings-daemon/gnome-settings-daemon")
 run_once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 run_once("compton", " -b")
 run_once("conky")
-run_once("dunst", " -config /home/sejo/.dunstrc")
+run_once("dunst", " -config " .. paths.dunst .."/.dunstrc")
 run_once("xfce4-volumed-pulse")
 run_once("xscreensaver", " --no-splash")
 run_once("xfce4-power-manager")
 run_once("blueman-applet")
 run_once("nm-applet")
+run_once("xscreensaver -no-splash &")
+run_once("xautolock -detectsleep -time 35 -locker '".. paths.scripts ..  "lock.sh' -notify 30")
 
 -- }}}
