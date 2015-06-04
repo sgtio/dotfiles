@@ -19,8 +19,16 @@
 
 ;; (ample-theme ample-zen-theme auto-complete popup base16-theme color-theme-sanityinc-tomorrow color-theme-solarized color-theme lua-mode magit git-rebase-mode git-commit-mode multi-term popup smex spacegray-theme sublime-themes sublimity tabbar theme-changer tronesque-theme underwater-theme yasnippet zenburn-theme)
 ;;;;;; List of packages that need to be installed ;;;;;;;;;;;;;;;;
-(setq package-list '(auto-complete popup color-theme lua-mode magit git-rebase-mode git-commit-mode multi-term popup smex spacegray-theme sublimity tabbar theme-changer yasnippet ))
+(setq package-list '(auto-complete popup color-theme lua-mode magit git-rebase-mode git-commit-mode multi-term popup smex spacegray-theme sr-speedbar sublimity tabbar theme-changer yasnippet ))
 
+; Refresh package list
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;;;;;; Plugin activation ;;;;;;;;;;;;;;;
 
