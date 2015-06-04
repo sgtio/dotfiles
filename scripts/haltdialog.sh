@@ -5,7 +5,7 @@ ACTION=`zenity --width=90 --height=200 --list --radiolist --text="Select logout 
 if [ -n "${ACTION}" ];then
   case $ACTION in
   Shutdown)
-      systemctl halt
+      systemctl poweroff
       ;;
   Reboot)
       systemctl reboot

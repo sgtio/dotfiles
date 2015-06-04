@@ -36,31 +36,35 @@ function weather.getWeather(paths)
    -- weather[2] --> temperature
    weather = weathertext:split(':')
    weather[2]=tonumber(weather[2])
+
+   -- Uncomment this to substitute text with icons {{{{
+   
    -- Rain
-   if matchThis(weather[1], "Rain") or matchThis(weather[1], "Drizzle") then
-      if matchThis(weather[1], "Light") then
-	 weatherinfo = string.format(": %sºC", weather[2])
-      else
-	 weatherinfo = string.format("☔: %sºC", weather[2])
-      end
-      -- Cloudy
-   elseif matchThis(weather[1], "Cloudy") or matchThis(weather[1], "Overcast") then
-      if matchThis(weather[1], "Partly") then
-	 weatherinfo = string.format(" : %sºC ", weather[2])
-      else
-	 weatherinfo = string.format(" : %sºC ", weather[2])
-      end
-   elseif matchThis(weather[1], "Mist") then
-      weatherinfo = string.format(" : %sºC ", weather[2])
-      -- Sunny
-   elseif matchThis(weather[1], "Sunny") then
-      weatherinfo = string.format(" : %sºC ", weather[2])
-      -- Snow
-   elseif  matchThis(weather[1], "Snow") then
-      weatherinfo = string.format(" ❄: %sºC ", weather[2])
-   else
-      weatherinfo = " Weather: " .. weather[1] .. " " .. weather[2] .. "ºC "
-   end
+--   if matchThis(weather[1], "Rain") or matchThis(weather[1], "Drizzle") then
+--      if matchThis(weather[1], "Light") then
+--	 weatherinfo = string.format(": %sºC", weather[2])
+--      else
+--	 weatherinfo = string.format("☔: %sºC", weather[2])
+--      end
+--      -- Cloudy
+--   elseif matchThis(weather[1], "Cloudy") or matchThis(weather[1], "Overcast") then
+--      if matchThis(weather[1], "Partly") then
+--	 weatherinfo = string.format(" : %sºC ", weather[2])
+--      else
+--	 weatherinfo = string.format(" : %sºC ", weather[2])
+--      end
+--   elseif matchThis(weather[1], "Mist") then
+--      weatherinfo = string.format(" : %sºC ", weather[2])
+--      -- Sunny
+--   elseif matchThis(weather[1], "Sunny") or matchThis(weather[1], "Clear") or matchThis(weather[1], "Fair") then
+--      weatherinfo = string.format(" : %sºC ", weather[2])
+--      -- Snow
+--   elseif  matchThis(weather[1], "Snow") then
+--      weatherinfo = string.format(" ❄: %sºC ", weather[2])
+   --   else
+   --}}}}
+   weatherinfo = weather[1] .. " " .. weather[2] .. "ºC "
+--   end
    --}}}
 
    --{{{

@@ -29,7 +29,7 @@ local tools = {
     },
     editor = {
     },
-    email = "thunderbird",
+    email = "geary",
 }
 
 tools.browser.primary = os.getenv("BROWSER") or "firefox"
@@ -164,7 +164,7 @@ tags = {
       layouts[2],  -- 2:Term
       layouts[2],  -- 3:IDE
       layouts[2],  -- 4:Files
-      layouts[2],   -- 5:Office
+      layouts[2],  -- 5:Office
       layouts[2],  -- 6:Mail
       layouts[2],  -- 7:Multimedia
       layouts[1],   -- 8:Float
@@ -202,7 +202,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Vicious
 
 -- Separator definition
-local separator = '<span color="' .. beautiful.separator .. '"> | </span>'
+local separator = '<span color="' .. beautiful.separator .. '"></span>'
 
 -- RAM widget
 memwidget = wibox.widget.textbox()
@@ -211,12 +211,12 @@ vicious.register(memwidget, vicious.widgets.mem,
 		 function(widget, args)
 		    memtext = ''
 		    if args[1] < 40 then
-		       memtext = string.format('<span color="%s"> : %d%% (%dMB/%dMB) </span>',
-					    beautiful.green, args[1], args[2], args[3])
+		       memtext = string.format('<span color="%s"> : %d%% </span>',
+					    beautiful.green, args[1])
 		    elseif args[1] < 70 then
-		       memtext = string.format('<span color="%s"> : %d%% (%dMB/%dMB) </span>', beautiful.yellow, args[1], args[2], args[3])
+		       memtext = string.format('<span color="%s"> : %d%% </span>', beautiful.yellow, args[1])
 		    else
-		       memtext = string.format('<span color="%s"> : %d%% (%dMB/%dMB) </span>', beautiful.red, args[1], args[2], args[3])
+		       memtext = string.format('<span color="%s"> : %d%% </span>', beautiful.red, args[1])
 		    end
 		    return separator .. memtext .. separator
 		 end,
@@ -275,6 +275,7 @@ vicious.register(iowidget, vicious.widgets.dio,
 		 end,
 		 3)
 vicious.register(iographwidget, vicious.widgets.dio, "${sda total_kb}", 3)
+
 -- CPU Temperature
 cputempwidget = wibox.widget.textbox()
 vicious.cache(vicious.widgets.thermal)
@@ -302,6 +303,8 @@ vicious.register(weatherwidget, vicious.widgets.weather,
 		    return weather.getWeather(paths)
 		 end,
 		 300, 'ESMS')
+
+-- Mail
 
 --}}}
 
@@ -388,21 +391,23 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    right_layout:add(weatherwidget)
     right_layout:add(cputextwidget)
-    right_layout:add(cpuwidget)
+--    right_layout:add(cpuwidget)
     right_layout:add(iowidget)
-    right_layout:add(iographwidget)
+--    right_layout:add(iographwidget)
     right_layout:add(memwidget)
     right_layout:add(cputempwidget)
-    right_layout:add(mytextclock)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mylayoutbox[s])
+
+    local middle_layout = wibox.layout.fixed.horizontal()
+    middle_layout:add(weatherwidget)
+    middle_layout:add(mytextclock)
     
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
---    layout:set_middle(mytasklist[s])
+    layout:set_middle(middle_layout)
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
@@ -498,7 +503,11 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Shift"   }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "e", function () awful.util.spawn(paths.scripts .. "haltdialog.sh") end),
+    awful.key({ modkey, "Shift"   }, "t", function () awful.util.spawn(paths.scripts .. "shutdowndialog.sh") end),
+
+    awful.key({ modkey, "Shift"   }, "e", function () awful.util.spawn(paths.scripts .. "logoffdialog.sh") end),
+
+    awful.key({ modkey, "Shift"   }, "y", function () awful.util.spawn(paths.scripts .. "rebootdialog.sh") end),
 
     awful.key({ modkey, "Shift"   }, "Right",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey, "Shift"   }, "Left",     function () awful.tag.incmwfact(-0.05)    end),
@@ -728,7 +737,7 @@ awful.rules.rules = {
     { rule_any = { class = { "TeXstudio" }, instance = { "libreoffice" } },
       properties = { tag = tags[1][5] } },
 
-    { rule_any = { class = { "Thunderbird", "Pidgin", "Evolution" } },
+    { rule_any = { class = { "Thunderbird", "Geary", "Skype", "Pidgin", "Evolution" } },
       properties = { tag = tags[1][6] } },
 
     { rule_any = { class = { "Spotify", "Banshee", "Rhythmbox", "Clementine", "Audacious", "Vlc", "MPlayer" } },
@@ -831,7 +840,7 @@ function run_once(prg,arg_string,pname,screen)
           awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
        end
 end
-run_once("/usr/lib/gnome-settings-daemon/gnome-settings-daemon")
+--run_once("/usr/lib/gnome-settings-daemon/gnome-settings-daemon")
 run_once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 run_once("compton", " -b")
 run_once("conky")
