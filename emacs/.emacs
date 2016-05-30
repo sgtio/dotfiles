@@ -28,7 +28,7 @@
 		     lua-mode magit
 		     multi-term popup
 		     smex
-		     monokai-theme
+		     solarized-theme
 		     sr-speedbar
 		     sublimity
 		     tabbar
