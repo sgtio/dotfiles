@@ -38,6 +38,15 @@
 		     helm-gtags
 		     helm-projectile
 		     helm-swoop
+		     company
+		     projectile
+		     clean-aindent-mode
+		     dtrt-indent
+		     ws-butler
+		     smartparens
+             realgud
+             js2-mode
+             ac-js2
 		     ))
 
 ; Refresh package list
@@ -53,22 +62,26 @@
 ;; Tabs
 (require 'setup-tabbar)
 ;; Expression matching
-;;(require 'setup-ido)
 (require 'setup-helm)
 (require 'setup-helm-gtags)
-
-;;(require 'setup-smex)
 ;; File tree explorer
 (require 'sr-speedbar)
+;; Project management
+(require 'setup-cedet)
+(require 'setup-projectile)
 ;; Snippets
 (require 'setup-yasnippet)
-;; Sublimity
-;;(require 'sublimity)
-;;(require 'sublimity-scroll)
-;; Autocomplete
-;;(require 'setup-autocomplete)
+;; Indentation and whitespace plugins
+(require 'setup-clean-aindent-mode)
+(require 'setup-dtrt-indent)
+(require 'setup-ws-butler)
 ;; Multiterm
 (require 'setup-multiterm)
+;; Compilation and debugging
+(require 'setup-compilation)
+;; Autocomplete
+(require 'setup-company)
+(require 'setup-smartparens)
 
 ;;;;;;;;;;; Theme setup ;;;;;;;;;;;;;;;;;;;;
 (require 'setup-theme)
@@ -79,6 +92,5 @@
 ;;;;;;;;;;;; Key bindings ;;;;;;;;;
 (require 'setup-keybindings)
 
-;; Temporary directory for backup files
+;; Rest of the settings
 (require 'setup-misc-config)
-
