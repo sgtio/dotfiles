@@ -21,10 +21,10 @@
 (add-hook 'eshell-mode-hook 'helm-gtags-mode)
 
 ;; Enable helm-gtags-mode in languages that GNU Global supports
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'java-mode-hook 'helm-gtags-mode)
+(add-hook 'c-mode-common-hook 'helm-gtags-mode) ;C, C++, Java
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
+(eval-after-load 'js-mode '(add-hook 'js-mode-hook 'helm-gtags-mode))
+(eval-after-load 'elpy-mode '(add-hook 'python-mode-hook 'helm-gtags-mode))
 
 ;; key bindings
 (define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)

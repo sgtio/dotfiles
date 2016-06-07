@@ -6,6 +6,10 @@
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 (setq js2-highlight-level 3)
 
+;; Python IDE
+(elpy-enable)
+
+
 ;;.ino files use c++-mode
 (setq auto-mode-alist
       (append

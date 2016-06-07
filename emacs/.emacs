@@ -47,6 +47,7 @@
              realgud
              js2-mode
              ac-js2
+             elpy
 		     ))
 
 ; Refresh package list

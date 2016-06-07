@@ -34,8 +34,10 @@
 ;; Hide welcome screen
 (setq inhibit-startup-message t)
 
-;; Provide code folding for C mode
+;; Provide code folding for different modes
 (add-hook 'c-mode-common-hook   'hs-minor-mode)
+(add-hook 'prog-mode-common-hook   'hs-minor-mode)
+(add-hook 'python-mode-common-hook   'hs-minor-mode)
 
 ;; Code style definition
 ;; Available C style:
