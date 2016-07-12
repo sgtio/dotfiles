@@ -64,6 +64,9 @@ command W w !sudo tee % > /dev/null
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
+" Line number
+set number
+
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
 set langmenu=en
@@ -149,7 +152,6 @@ set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-endtry
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo

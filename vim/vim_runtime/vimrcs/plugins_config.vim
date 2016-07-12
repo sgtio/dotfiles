@@ -13,13 +13,12 @@
 "
 "
 " Sections:
-"    -> Load pathogen paths
+"    -> Dein 
 "    -> bufExplorer
 "    -> MRU plugin
 "    -> YankStack
 "    -> CTRL-P
 "    -> Emmet
-"    -> snipMate
 "    -> Vim grep
 "    -> Nerd Tree
 "    -> vim-multiple-cursors
@@ -33,44 +32,36 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
-" => NeoBundle
+" => Dein
 """"""""""""""""""""""""""""""
-" Required:
-call neobundle#begin(expand('~/.vim_runtime/bundle/'))
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim_runtime/bundle/repos/github.com/Shougo/dein.vim
 
-" Let NeoBundle manage NeoBundle
+call dein#begin(expand('.vim_runtime/bundle'))
+
+" Let dein manage dein
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call dein#add('Shougo/dein.vim')
 
 " Begin list of plugins:
-Neobundle 'jlanzarotta/bufexplorer'
-NeoBundle 'mru.vim'
-NeoBundle 'maxbrunsfeld/vim-yankstack'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'garbas/vim-snipmate'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'airblade/vim-gitgutter'
+call dein#add('altercation/vim-colors-solarized.git')
+call dein#add('jlanzarotta/bufexplorer')
+call dein#add('mru.vim')
+call dein#add('maxbrunsfeld/vim-yankstack')
+call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('mattn/emmet-vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('terryma/vim-multiple-cursors')
+call dein#add('itchyny/lightline.vim')
+call dein#add('junegunn/goyo.vim')
+call dein#add('scrooloose/syntastic')
+call dein#add('airblade/vim-gitgutter')
 
-call neobundle#end()
+call dein#end()
 
-" Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
-""""""""""""""""""""""""""""""
-" => Load pathogen paths
-""""""""""""""""""""""""""""""
-call pathogen#infect('~/.vim_runtime/sources_forked/{}')
-call pathogen#infect('~/.vim_runtime/sources_non_forked/{}')
-call pathogen#helptags()
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -114,13 +105,6 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 """"""""""""""""""""""""""""""
 " Enable all functions in all modes
 let g:user_emmet_mode='a'
-
-
-""""""""""""""""""""""""""""""
-" => snipMate (beside <TAB> support <CTRL-j>)
-""""""""""""""""""""""""""""""
-ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
 
 
 """"""""""""""""""""""""""""""

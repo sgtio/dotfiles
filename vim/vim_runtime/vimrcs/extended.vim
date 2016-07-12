@@ -66,9 +66,9 @@ set guioptions-=L
 set background=dark
 
 try
-    colorscheme solarized
+"    colorscheme solarized
 catch
-
+endtry
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
