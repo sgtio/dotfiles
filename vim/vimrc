@@ -1,4 +1,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File name: vimrc
+"
+" File description: Central management of VIM config files
+" 
+"
 " Maintainer: 
 "       Sergio Ruiz
 "       https://sejoruiz.github.io - sejoruiz@gmail.com
@@ -26,6 +31,7 @@
 " Acknowledgements: https://github.com/amix/vimrc
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set runtimepath+=~/.vim_runtime
 source ~/.vim_runtime/vimrcs/basic.vim
 source ~/.vim_runtime/vimrcs/filetypes.vim
