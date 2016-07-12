@@ -1,0 +1,10 @@
+bundle/
+colors/
+plugins/
+
+# Ignore hidden and temp files
+.*
+*~
+
+# Include .gitignore in the repository
+!.gitignore
