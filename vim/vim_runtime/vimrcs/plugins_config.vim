@@ -58,6 +58,8 @@ call dein#add('itchyny/lightline.vim')
 call dein#add('junegunn/goyo.vim')
 call dein#add('scrooloose/syntastic')
 call dein#add('airblade/vim-gitgutter')
+call dein#add('mileszs/ack.vim')
+" End list of plugins
 
 call dein#end()
 
@@ -152,12 +154,18 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
       \             ['fugitive', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'] ]
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -167,6 +175,11 @@ let g:lightline = {
       \ 'separator': { 'left': ' ', 'right': ' ' },
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
+
+function! s:syntastic()
+      SyntasticCheck
+        call lightline#update()
+    endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Goyo
@@ -181,14 +194,14 @@ nnoremap <silent> <leader>z :Goyo<cr>
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
-let g:syntastic_python_checkers=['pyflakes']
+"let g:syntastic_python_checkers=['pyflakes']
 
 " Javascript
-let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_javascript_checkers = ['jshint']
 
 " Go
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
 
 " Custom CoffeeScript SyntasticCheck
 func! SyntasticCheckCoffeescript()
@@ -208,6 +221,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 3
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -215,3 +229,14 @@ let g:syntastic_check_on_wq = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ack (replacement for vim grep)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack 
+cnoreabbrev AG Ack 
+
