@@ -39,7 +39,7 @@ if &compatible
 endif
 set runtimepath+=~/.vim_runtime/bundle/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('.vim_runtime/bundle'))
+call dein#begin(expand('~/.vim_runtime/bundle'))
 
 " Let dein manage dein
 " Required:
