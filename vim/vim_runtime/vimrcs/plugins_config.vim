@@ -35,7 +35,7 @@
 " => Dein
 """"""""""""""""""""""""""""""
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 set runtimepath+=~/.vim_runtime/bundle/repos/github.com/Shougo/dein.vim
 
@@ -59,6 +59,7 @@ call dein#add('junegunn/goyo.vim')
 call dein#add('scrooloose/syntastic')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('mileszs/ack.vim')
+call dein#add('christoomey/vim-tmux-navigator')
 " End list of plugins
 
 call dein#end()
@@ -146,40 +147,40 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " => lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
+            \ 'colorscheme': 'solarized',
+            \ }
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': ' ', 'right': ' ' },
-      \ 'subseparator': { 'left': ' ', 'right': ' ' }
-      \ }
+            \ 'colorscheme': 'solarized',
+            \ 'active': {
+            \   'left': [ ['mode', 'paste'],
+            \             ['fugitive', 'readonly', 'filename', 'modified'] ],
+            \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'] ]
+            \ },
+            \ 'component': {
+            \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
+            \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+            \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+            \ },
+            \ 'component_expand': {
+            \   'syntastic': 'SyntasticStatuslineFlag',
+            \ },
+            \ 'component_type': {
+            \   'syntastic': 'error',
+            \ },
+            \ 'component_visible_condition': {
+            \   'readonly': '(&filetype!="help"&& &readonly)',
+            \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+            \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+            \ },
+            \ 'separator': { 'left': ' ', 'right': ' ' },
+            \ 'subseparator': { 'left': ' ', 'right': ' ' }
+            \ }
 
 function! s:syntastic()
-      SyntasticCheck
-        call lightline#update()
-    endfunction
+    SyntasticCheck
+    call lightline#update()
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Goyo
@@ -240,3 +241,6 @@ cnoreabbrev aG Ack
 cnoreabbrev Ag Ack 
 cnoreabbrev AG Ack 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-TMUX
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
