@@ -8,3 +8,4 @@ alias pchome='ssh -p 2002 user@user.duckdns.org'
 alias pchomenew='ssh -p 2002 user@user.duckdns.org' 
 alias emc='emc -nw'
 alias journalctl="sudo journalctl"
+alias ls='ls -F --color'
