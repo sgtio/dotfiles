@@ -1,7 +1,7 @@
 bundle/
 colors/
 plugins/
-
+temp_dirs/
 # Ignore hidden and temp files
 .*
 *~
