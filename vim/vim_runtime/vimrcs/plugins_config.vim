@@ -60,6 +60,7 @@ call dein#add('scrooloose/syntastic')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('mileszs/ack.vim')
 call dein#add('christoomey/vim-tmux-navigator')
+" call dein#add('Valloric/YouCompleteMe')
 " End list of plugins
 
 call dein#end()
@@ -93,7 +94,7 @@ nmap <c-P> <Plug>yankstack_substitute_newer_paste
 """"""""""""""""""""""""""""""
 " => CTRL-P
 """"""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra' 
 
 let g:ctrlp_map = '<c-f>'
 map <leader>j :CtrlP<cr>
@@ -243,4 +244,9 @@ cnoreabbrev AG Ack
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-TMUX
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Youcompleteme (Code completion)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
