@@ -105,7 +105,7 @@ beautiful.init(paths.awesome.themes .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc -e bash -c 'tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME'"
-editor = os.getenv("EDITOR") or "emacs"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.

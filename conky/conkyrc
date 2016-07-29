@@ -39,7 +39,7 @@ show_graph_range no
 # Text settings #
 use_xft yes
 xftalpha 0
-xftfont Droid Sans:size=8
+xftfont DejaVu Sans Book:size=8
 text_buffer_size 256
 override_utf8_locale yes
 
@@ -60,12 +60,12 @@ color7 FFFFFF
 color8 FFFFFF
 
 TEXT
-${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?p=SWXX0043&u=c" -o ~/.cache/weather.xml}
+${execi 300 curl -s "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22malmo%2C%20se%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys" -o ~/.cache/weather.xml}
 \
 # Weather
 \
-${goto 36}${voffset 0}${font Droid Sans :size=36}${color1}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font}${color}
-${goto 46}${voffset 14}${font Droid Sans :size=12}${color1}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font}${color}
+${goto 36}${voffset 0}${font DejaVu Sans Book :size=36}${color1}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font}${color}
+${goto 46}${voffset 14}${font DejaVu Sans Book :size=12}${color1}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font}${color}
 \
 ${color1}${alignr 55}${voffset -72}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "pressure=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"} ${execi 300 grep "yweather:units" ~/.cache/weather.xml | grep -o "pressure=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
 ${color1}${alignr 55}${voffset 7}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "humidity=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"} %${color}

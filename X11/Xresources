@@ -6,7 +6,7 @@ URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 
 ! Font
-URxvt.font: xft:Inconsolata:size=12:antialias=true:hinting=true
+URxvt.font: xft:DejaVu Sans Mono:size=11:antialias=true:hinting=true
 !URxvt.letterSpace: -1
 
 
