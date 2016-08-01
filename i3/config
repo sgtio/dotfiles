@@ -83,8 +83,8 @@ bindsym $mod+b split horizontal
 # split in vertical orientation
 bindsym $mod+v split vertical
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# enter fullscreen mode for the focused container (not working?)
+#bindsym $mod+f toggle fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -175,9 +175,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# color defines for solarized styled i3
+## color defines for solarized styled i3
 
-# solarized accents
+## solarized accents
 set $yellow   #b58900
 set $orange   #cb4b16
 set $red      #dc322f
@@ -187,23 +187,23 @@ set $blue     #268bd2
 set $cyan     #2aa198
 set $green    #859900
 
-# solarized dark
-set $base03 #002b36
-set $base02 #073642
-set $base01 #586e75
-set $base00 #657b83
-set $base0  #839496
-set $base1  #93a1a1
-set $base2  #eee8d5
-set $base3  #fdf6e3
-set $custom #1c5766
+## solarized dark
+set $base03   #002b36
+set $base02   #073642
+set $base01   #586e75
+set $base00   #657b83
+set $base10   #839496
+set $base11   #93a1a1
+set $base12   #eee8d5
+set $base13   #fdf6e3
+set $custom   #1c5766
 
 
-# set some nice colors      border     background  text
-client.focused              #002b36    #002b36     #586e75
-client.unfocused            #002b36    #073642     #839496
-client.focused_inactive     #002b36    #073642     #839496
-client.urgent               #002b36    #dc322f     #fdf6e3
+# set client theme          border     background  text
+client.focused              $yellow    $yellow     $base03
+client.unfocused            $base02    $base02     $base10
+client.focused_inactive     $base02    $base02     $base10
+client.urgent               $red       $red        $base13
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -214,13 +214,16 @@ bar {
     tray_output primary
     font pango:DejaVu Sans Book 12
     colors {
-	background          #002b36
-	statusline          #586e75
-	separator           #586e75
-	focused_workspace   #b58900    #b58900    #002b36
-	active_workspace    #586e75    #586e75    #002b36
-	inactive_workspace  #073642    #002b36    #839496
-	urgent_workspace    #dc322f    #dc322f    #fdf6e3
+    ## Set colors       
+	background          $base03
+	statusline          $base01
+	separator           $base01
+                         
+                        #border    #background    #text 
+	focused_workspace   $yellow    $yellow        $base03
+	active_workspace    $base01    $base01        $base03
+	inactive_workspace  $base03    $base03        $base10
+	urgent_workspace    $red       $red           $base13
 	}
 }
 
@@ -255,7 +258,9 @@ assign [class="Audacious"] $WS4
 assign [class="Thunar"] $WS5
 assign [class="Nautilus"] $WS5
 assign [class="Thunderbird"] $WS6
+assign [class="Icedove"] $WS6
 assign [class="Pidgin"] $WS6
+assign [class="Empathy"] $WS6
 
 ##Screen 10 Workspace
 workspace $WS_SCREEN output VGA1
@@ -294,3 +299,5 @@ exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
 exec --no-startup-id xscreensaver -no-splash &
 exec --no-startup-id xautolock -detectsleep -time 25 -locker "~/.config/i3/scripts/lock.sh" -notify 30
+exec --no-startup-id empathy
+exec --no-startup-id thunderbird
