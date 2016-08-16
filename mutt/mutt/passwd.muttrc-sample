@@ -1,0 +1,13 @@
+#############################################################################
+# CAUTION: Don't do this on an unsafe environment or public computer
+# 
+# Instructions:
+# 1. Define all usernames and passwords
+# 2. Create a public private gpg key pair: gpg --gen-key
+# 3. Encrypt this file using such key: gpg -e -r 'your name' passwd.muttrc
+# 4. Destroy the file with the plain text passwords: shred -xu passwd.muttrc
+#
+#############################################################################
+
+set my_personal_user = "User"
+set my_personal_passwd = "Password"

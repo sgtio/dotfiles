@@ -1,0 +1,34 @@
+#############################################
+# User name and password
+# These two variables should be set in passwd.gpg
+set imap_user     = $my_personal_user
+set imap_pass     = $my_personal_passwd
+
+############################################
+# Set IMAP folders
+set folder=imap[s]://imap.server.domain[:port]/[folder/]
+set spoolfile     = +INBOX
+mailboxes         = +INBOX
+
+############################################
+# Misc settings
+## Store message headers locally to speed things up.
+## If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
+set header_cache = "$HOME/.cache/mutt"
+
+## Store messages locally to speed things up, like searching message bodies.
+## Can be the same folder as header_cache.
+## This will cost important disk usage according to your e-mail amount.
+set message_cachedir = "$HOME/.cache/mutt"
+
+## Specify where to save and/or look for postponed messages.
+set postponed = +Drafts
+
+## Allow Mutt to open new imap connection automatically.
+unset imap_passive
+
+## Keep IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300
+
+## How often to check for new mail (time in seconds).
+set mail_check = 120

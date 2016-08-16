@@ -15,7 +15,7 @@ bind attach,index g first-entry
 bind attach,index G last-entry
 
 # Signature
-set signature="$HOME/.mutt/signaturei.muttrc"
+set signature="$HOME/.mutt/signature.muttrc"
 
 ######################################################
 # Theme and visual appereance
@@ -30,7 +30,7 @@ folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
 
 ######################################################
 # Password
-source "gpg2 -dq $HOME/.mutt/passwd.gpg |"
+source "gpg2 -dq $HOME/.mutt/passwd.muttrc.gpg |"
 
 ######################################################
 # IMAP configuration

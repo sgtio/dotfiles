@@ -1,0 +1,23 @@
+################################################################
+# Sent folder. Use it if not using GMail 
+set record = +Sent
+
+# Sent folder won't be used. Useful when using GMail
+#unset record
+
+################################################################
+# User name and password
+set my_pass   = $my_personal_passwd
+set my_user   = $my_personal_user
+
+set realname = 'Your Real Name'
+set from = me@example.com
+set use_from = yes
+
+set smtp_url=smtp[s]://$my_user:$my_pass@smtp.domain.tld
+set ssl_force_tls = yes
+
+# Uncomment if using STARTTLS
+#set ssl_starttls = yes
+
+################################################################
