@@ -108,8 +108,8 @@ bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
 bindsym $mod+3 workspace $WS3
 bindsym $mod+4 workspace $WS4
-bindsym $mod+5 workspace $WS5
-bindsym $mod+6 workspace $WS6
+bindsym $mod+5 workspace $WS5; layout tabbed
+bindsym $mod+6 workspace $WS6; layout tabbed
 bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
 bindsym $mod+9 workspace $WS9
@@ -261,6 +261,7 @@ assign [class="Thunderbird"] $WS6
 assign [class="Icedove"] $WS6
 assign [class="Pidgin"] $WS6
 assign [class="Empathy"] $WS6
+assign [class="VirtualBox"] $WS5
 
 ##Screen 10 Workspace
 workspace $WS_SCREEN output VGA1
@@ -291,6 +292,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Select an action.' -b 'Shutd
 exec --no-startup-id compton --config ~/.config/compton/compton.conf --shadow-exclude '!focused' -b
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id numlockx on
+exec --no-startup-id setxkbmap -option caps:none
 #exec --no-startup-id conky -c ~/.config/conky/conkyrc
 #exec --no-startup-id xfce4-power-manager
 exec --no-startup-id dunst -config ~/config/dunst/dunstrc
@@ -298,6 +301,6 @@ exec --no-startup-id dunst -config ~/config/dunst/dunstrc
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
 exec --no-startup-id xscreensaver -no-splash &
-exec --no-startup-id xautolock -detectsleep -time 25 -locker "~/.config/i3/scripts/lock.sh" -notify 30
+exec --no-startup-id xautolock -detectsleep -time 15 -locker "~/.config/i3/scripts/lock.sh" -notify 30
 exec --no-startup-id empathy
 exec --no-startup-id thunderbird

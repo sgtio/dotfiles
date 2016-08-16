@@ -1,0 +1,46 @@
+#######################################################
+# General stuff
+set editor=`echo \$EDITOR`
+set my_name = "Sergio Ruiz"
+set send_charset="utf-8"
+
+# Vi-like key bindings
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
+
+# Signature
+set signature="$HOME/.mutt/signaturerc"
+
+######################################################
+# Theme and visual appereance
+source ~/.mutt/colors.solarized-dark
+
+## Display recipient instead of sender in "Sent" folder view
+set my_index_format_pre='set index_format="%2C | %Z [%d] %-30.30'
+set my_index_format_post=' (%-4.4c) %?M?<%M> ?%s"'
+
+folder-hook .*[sS]ent.* "$my_index_format_pre"t"$my_index_format_post"
+folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
+#
+######################################################
+# IMAP configuration
+source "$HOME/.mutt/imaprc"
+
+######################################################
+# POP3 configuration
+source "$HOME/.mutt/poprc"
+
+######################################################
+# SNMP configuration
+source "$HOME/.mutt/snmprc"
+
+######################################################
+# Password
+source "gpg2 -dq $HOME/.mutt/passwd.gpg |"
+
