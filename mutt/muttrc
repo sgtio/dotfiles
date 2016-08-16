@@ -15,11 +15,11 @@ bind attach,index g first-entry
 bind attach,index G last-entry
 
 # Signature
-set signature="$HOME/.mutt/signaturerc"
+set signature="$HOME/.mutt/signaturei.muttrc"
 
 ######################################################
 # Theme and visual appereance
-source ~/.mutt/colors.solarized-dark
+source ~/.mutt/solarized-dark.muttrc
 
 ## Display recipient instead of sender in "Sent" folder view
 set my_index_format_pre='set index_format="%2C | %Z [%d] %-30.30'
@@ -27,20 +27,21 @@ set my_index_format_post=' (%-4.4c) %?M?<%M> ?%s"'
 
 folder-hook .*[sS]ent.* "$my_index_format_pre"t"$my_index_format_post"
 folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
-#
-######################################################
-# IMAP configuration
-source "$HOME/.mutt/imaprc"
-
-######################################################
-# POP3 configuration
-source "$HOME/.mutt/poprc"
-
-######################################################
-# SNMP configuration
-source "$HOME/.mutt/snmprc"
 
 ######################################################
 # Password
 source "gpg2 -dq $HOME/.mutt/passwd.gpg |"
 
+######################################################
+# IMAP configuration
+source "$HOME/.mutt/imap.muttrc"
+
+######################################################
+# POP3 configuration
+source "$HOME/.mutt/pop.muttrc"
+
+######################################################
+# SMTP configuration
+source "$HOME/.mutt/smtp.muttrc"
+
+#####################################################

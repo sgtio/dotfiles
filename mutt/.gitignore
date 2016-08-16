@@ -1,6 +1,7 @@
 *~
-imaprc
+imap.muttrc
 passwd.gpg
-snmprc
-poprc
-colors.solarized-dark
+smtp.muttrc
+pop.muttrc
+solarized-dark.muttrc
+
