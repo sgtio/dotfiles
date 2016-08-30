@@ -2,13 +2,13 @@
 " File name: basic.vim
 "
 " File description: Basic settings
-" 
 "
-" Maintainer: 
+"
+" Maintainer:
 "       Sergio Ruiz
 "       https://sejoruiz.github.io - sejoruiz@gmail.com
 "
-" Version: 
+" Version:
 "       0.1 - 12/07/2016
 "
 "
@@ -46,16 +46,8 @@ filetype indent on
 set autoread
 
 " With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-" :W sudo saves the file 
-" (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
 
 " Saves time when stupid typo for quiting occurs
 command Q q
@@ -73,7 +65,7 @@ set so=7
 set number
 
 " Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
+let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -104,14 +96,14 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -138,7 +130,7 @@ set foldcolumn=1
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 set background=dark
 set cursorline
@@ -147,7 +139,7 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=e
     set guitablabel=%M\ %t
-" else 
+" else
 "	set t_Co=256
 endif
 
@@ -176,17 +168,20 @@ set noexpandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak on 150 characters
 set lbr
-set tw=500
+set tw=150
 
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" If the files contain any different setting, use it instead.
+set modeline
+set modelines=5
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -239,7 +234,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -297,7 +292,7 @@ autocmd BufWrite Makefile :call DeleteTrailingWS()
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ag and put the cursor in the right position
-map <leader>g :Ag 
+map <leader>g :Ag
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -347,8 +342,9 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-
-
+" Toggle display trailing spaces (Weird Lines)
+map <leader>wl :set list! listchars=trail:·,tab:»·<cr>
+map <leader>wf /\s\+$
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -357,7 +353,7 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
