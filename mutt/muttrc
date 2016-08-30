@@ -29,6 +29,14 @@ folder-hook .*[sS]ent.* "$my_index_format_pre"t"$my_index_format_post"
 folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
 
 ######################################################
+# Abook - Address book
+# Type Q in pager to start looking for contacts
+# It needs to be installed, as it's an independent program
+set query_command="abook --mutt-query '%s'"
+macro index a     "|abook --add-email\n" 'add sender to abook'
+macro pager a     "|abook --add-email\n" 'add sender to abook'
+
+######################################################
 # Password
 source "gpg2 -dq $HOME/.mutt/passwd.muttrc.gpg |"
 

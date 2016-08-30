@@ -60,6 +60,9 @@ command W w !sudo tee % > /dev/null
 " Saves time when stupid typo for quiting occurs
 command Q q
 
+" Mouse integration with VIM
+set mouse=a
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,7 +170,7 @@ set noswapfile
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
-set expandtab
+set noexpandtab
 
 " Be smart when using tabs ;)
 set smarttab
