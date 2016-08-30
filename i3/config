@@ -235,6 +235,7 @@ bindsym Control+$mod+2 [class="^.*"] border none
 ##Specific window rules
 
 for_window [class="(?i)chromium"] border none
+for_window [class="(?i)google-chrome"] border none
 for_window [class="(?i)URxvt"] border none
 for_window [class="(?i)firefox"] border none
 for_window [class="(?i)uzbl-browser"] border none
@@ -247,6 +248,7 @@ for_window [title="Preferences$"] floating enable
 
 ## Windows inside its workspace
 assign [class="Firefox"] $WS1
+assign [class="google-chrome"] $WS1
 assign [class="Navigator"] $WS1
 assign [class="URxvt"] $WS2
 assign [class="Emacs"] $WS3
