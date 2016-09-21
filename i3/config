@@ -9,18 +9,33 @@
 
 set $mod Mod4
 
-# Workspace naming
-set $WS1 1: W
-set $WS2 2: >_
-set $WS3 3: ☕
-set $WS4 4: ♫
-set $WS5 5: ⛁
-set $WS6 6: ✉
-set $WS7 7:
-set $WS8 8:
-set $WS9 9:
-set $WS_SCREEN 
+# Set primary and secondary monitors
+set $primary_monitor DVI-I-1
+set $second_monitor DP-0
 
+# Workspaces in main display (MOD + [NUMBER])
+set $WS01 "1: W"
+set $WS02 "2: >_"
+set $WS03 "3: ☕"
+set $WS04 "4: ♫"
+set $WS05 "5: ⛁"
+set $WS06 "6: ✉"
+set $WS07 "7: "
+set $WS08 "8: "
+set $WS09 "9: "
+set $WS10 "10: "
+
+#Workspaces in secondary display (CTRL + MOD + [WS NUMBER])
+set $WS11 "11: W"
+set $WS12 "12: >_"
+set $WS13 "13: ☕"
+set $WS14 "14: ♫"
+set $WS15 "15: ⛁"
+set $WS16 "16: ✉"
+set $WS17 "17: "
+set $WS18 "18: "
+set $WS19 "19: "
+set $WS20 "20: "
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -103,29 +118,81 @@ bindsym $mod+u focus parent
 # focus the child container
 bindsym $mod+d focus child
 
-# switch to workspace
-bindsym $mod+1 workspace $WS1
-bindsym $mod+2 workspace $WS2
-bindsym $mod+3 workspace $WS3
-bindsym $mod+4 workspace $WS4
-bindsym $mod+5 workspace $WS5; layout tabbed
-bindsym $mod+6 workspace $WS6; layout tabbed
-bindsym $mod+7 workspace $WS7
-bindsym $mod+8 workspace $WS8
-bindsym $mod+9 workspace $WS9
-bindsym $mod+0 workspace $WS_SCREEN
+# ######################################################################################
+# # Workspaces 
+# ######################################################################################
+# # Workspaces on primary monitor
+workspace $WS01 output $primary_monitor 
+workspace $WS02 output $primary_monitor
+workspace $WS03 output $primary_monitor
+workspace $WS04 output $primary_monitor
+workspace $WS05 output $primary_monitor 
+workspace $WS06 output $primary_monitor 
+workspace $WS07 output $primary_monitor
+workspace $WS08 output $primary_monitor
+workspace $WS09 output $primary_monitor
+workspace $WS10 output $primary_monitor
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $WS1
-bindsym $mod+Shift+2 move container to workspace $WS2
-bindsym $mod+Shift+3 move container to workspace $WS3
-bindsym $mod+Shift+4 move container to workspace $WS4
-bindsym $mod+Shift+5 move container to workspace $WS5
-bindsym $mod+Shift+6 move container to workspace $WS6
-bindsym $mod+Shift+7 move container to workspace $WS7
-bindsym $mod+Shift+8 move container to workspace $WS8
-bindsym $mod+Shift+9 move container to workspace $WS9
-bindsym $mod+Shift+0 move container to workspace $WS_SCREEN
+# Workspaces on secondary monitor
+workspace $WS11 output $second_monitor
+workspace $WS12 output $second_monitor
+workspace $WS13 output $second_monitor
+workspace $WS14 output $second_monitor
+workspace $WS15 output $second_monitor
+workspace $WS16 output $second_monitor
+workspace $WS17 output $second_monitor
+workspace $WS18 output $second_monitor
+workspace $WS19 output $second_monitor
+workspace $WS20 output $second_monitor
+
+# switch to workspace on primary monitor
+bindsym $mod+1 workspace $WS01
+bindsym $mod+2 workspace $WS02
+bindsym $mod+3 workspace $WS03
+bindsym $mod+4 workspace $WS04
+bindsym $mod+5 workspace $WS05; layout tabbed
+bindsym $mod+6 workspace $WS06; layout tabbed
+bindsym $mod+7 workspace $WS07
+bindsym $mod+8 workspace $WS08
+bindsym $mod+9 workspace $WS09
+bindsym $mod+0 workspace $WS10
+
+# switch to workspace on secondary monitor
+bindsym $mod+Control+1 workspace $WS11
+bindsym $mod+Control+2 workspace $WS12
+bindsym $mod+Control+3 workspace $WS13
+bindsym $mod+Control+4 workspace $WS14
+bindsym $mod+Control+5 workspace $WS15; layout tabbed
+bindsym $mod+Control+6 workspace $WS16; layout tabbed
+bindsym $mod+Control+7 workspace $WS17
+bindsym $mod+Control+8 workspace $WS18
+bindsym $mod+Control+9 workspace $WS19
+bindsym $mod+Control+0 workspace $WS20
+
+
+# move focused container to workspace on primary monitor
+bindsym $mod+Shift+1 move container to workspace $WS01
+bindsym $mod+Shift+2 move container to workspace $WS02
+bindsym $mod+Shift+3 move container to workspace $WS03
+bindsym $mod+Shift+4 move container to workspace $WS04
+bindsym $mod+Shift+5 move container to workspace $WS05
+bindsym $mod+Shift+6 move container to workspace $WS06
+bindsym $mod+Shift+7 move container to workspace $WS07
+bindsym $mod+Shift+8 move container to workspace $WS08
+bindsym $mod+Shift+9 move container to workspace $WS09
+bindsym $mod+Shift+0 move container to workspace $WS10
+
+# move focused container to workspace on secondary monitor
+bindsym $mod+Control+Shift+1 move container to workspace $WS11
+bindsym $mod+Control+Shift+2 move container to workspace $WS12
+bindsym $mod+Control+Shift+3 move container to workspace $WS13
+bindsym $mod+Control+Shift+4 move container to workspace $WS14
+bindsym $mod+Control+Shift+5 move container to workspace $WS15
+bindsym $mod+Control+Shift+6 move container to workspace $WS16
+bindsym $mod+Control+Shift+7 move container to workspace $WS17
+bindsym $mod+Control+Shift+8 move container to workspace $WS18
+bindsym $mod+Control+Shift+9 move container to workspace $WS19
+bindsym $mod+Control+Shift+0 move container to workspace $WS20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -230,12 +297,11 @@ bar {
 ## No window decoration
 for_window [class="^.*"] none
 new_window none
-bindsym Control+$mod+1 [class="^.*"] border normal
-bindsym Control+$mod+2 [class="^.*"] border none
+#bindsym Control+$mod+1 [class="^.*"] border normal
+#bindsym Control+$mod+2 [class="^.*"] border none
 ##Specific window rules
 
 for_window [class="(?i)chromium"] border none
-for_window [class="(?i)google-chrome"] border none
 for_window [class="(?i)URxvt"] border none
 for_window [class="(?i)firefox"] border none
 for_window [class="(?i)uzbl-browser"] border none
@@ -247,26 +313,22 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 
 ## Windows inside its workspace
-assign [class="Firefox"] $WS1
-assign [class="google-chrome"] $WS1
-assign [class="Navigator"] $WS1
-assign [class="URxvt"] $WS2
-assign [class="Emacs"] $WS3
-assign [class="Gedit"] $WS3
-assign [class="Gvim"] $WS3
-assign [class="Clementine"] $WS4
-assign [class="Spotify"] $WS4
-assign [class="Audacious"] $WS4
-assign [class="Thunar"] $WS5
-assign [class="Nautilus"] $WS5
-assign [class="Thunderbird"] $WS6
-assign [class="Icedove"] $WS6
-assign [class="Pidgin"] $WS6
-assign [class="Empathy"] $WS6
-assign [class="VirtualBox"] $WS5
-
-##Screen 10 Workspace
-workspace $WS_SCREEN output VGA1
+assign [class="Firefox"] $WS01
+assign [class="Navigator"] $WS01
+assign [class="URxvt"] $WS02
+assign [class="Emacs"] $WS03
+assign [class="Gedit"] $WS03
+assign [class="Gvim"] $WS03
+assign [class="Clementine"] $WS04
+assign [class="Spotify"] $WS04
+assign [class="Audacious"] $WS04
+assign [class="Thunar"] $WS05
+assign [class="Nautilus"] $WS05
+assign [class="Thunderbird"] $WS06
+assign [class="Icedove"] $WS06
+assign [class="Pidgin"] $WS06
+assign [class="Empathy"] $WS06
+assign [class="VirtualBox"] $WS05
 
 ##Shortcuts
 bindsym Control+$mod+w exec xdg-open https://www.google.com
@@ -316,6 +378,7 @@ exec --no-startup-id xscreensaver -no-splash &
 exec --no-startup-id xautolock -detectsleep -time 15 -locker "~/.config/i3/scripts/lock.sh" -notify 30
 exec --no-startup-id dunst -config ~/config/dunst/dunstrc
 exec --no-startup-id pidgin
+exec --no-startup-id megasync
 #exec --no-startup-id conky -c ~/.config/conky/conkyrc
 #exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id blueman-applet

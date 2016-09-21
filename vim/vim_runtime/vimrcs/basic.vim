@@ -175,8 +175,8 @@ set tabstop=4
 set lbr
 set tw=150
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
+set smartindent "Smart indent
 set wrap "Wrap lines
 
 " If the files contain any different setting, use it instead.
