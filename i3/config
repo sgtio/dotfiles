@@ -330,6 +330,7 @@ assign [class="Icedove"] $WS06
 assign [class="Pidgin"] $WS06
 assign [class="Empathy"] $WS06
 assign [class="VirtualBox"] $WS05
+assign [class="Gitk"] $WS12
 
 ##Shortcuts
 bindsym Control+$mod+w exec xdg-open https://www.google.com
