@@ -11,18 +11,19 @@ set $mod Mod4
 
 # Set primary and secondary monitors
 set $primary_monitor DVI-I-1
-set $second_monitor DP-0
+set $second_monitor HDMI-0
+set $second_monitor_position --right-of
 
 # Workspaces in main display (MOD + [NUMBER])
-set $WS01 "1: W"
-set $WS02 "2: >_"
-set $WS03 "3: ☕"
-set $WS04 "4: ♫"
-set $WS05 "5: ⛁"
-set $WS06 "6: ✉"
-set $WS07 "7: "
-set $WS08 "8: "
-set $WS09 "9: "
+set $WS01 "01: W"
+set $WS02 "02: >_"
+set $WS03 "03: ☕"
+set $WS04 "04: ♫"
+set $WS05 "05: ⛁"
+set $WS06 "06: ✉"
+set $WS07 "07: "
+set $WS08 "08: "
+set $WS09 "09: "
 set $WS10 "10: "
 
 #Workspaces in secondary display (CTRL + MOD + [WS NUMBER])
@@ -122,12 +123,12 @@ bindsym $mod+d focus child
 # # Workspaces 
 # ######################################################################################
 # # Workspaces on primary monitor
-workspace $WS01 output $primary_monitor 
+workspace $WS01 output $primary_monitor
 workspace $WS02 output $primary_monitor
 workspace $WS03 output $primary_monitor
 workspace $WS04 output $primary_monitor
-workspace $WS05 output $primary_monitor 
-workspace $WS06 output $primary_monitor 
+workspace $WS05 output $primary_monitor
+workspace $WS06 output $primary_monitor
 workspace $WS07 output $primary_monitor
 workspace $WS08 output $primary_monitor
 workspace $WS09 output $primary_monitor
@@ -367,6 +368,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Select an action.' -b 'Shutd
 
 
 ##Executing files on logon
+exec --no-startup-id xrandr --output $primary_monitor --auto --output $second_monitor --auto $second_monitor_position $primary_monitor
 exec --no-startup-id compton --config ~/.config/compton/compton.conf --shadow-exclude '!focused' -b
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
