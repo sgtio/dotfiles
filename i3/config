@@ -314,27 +314,27 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 
 ## Windows inside its workspace
-assign [class="Firefox"] $WS01
+assign [class="Firefox"] $WS11
 assign [class="Navigator"] $WS01
 assign [class="URxvt"] $WS02
 assign [class="Emacs"] $WS03
 assign [class="Gedit"] $WS03
 assign [class="Gvim"] $WS03
-assign [class="Clementine"] $WS04
-assign [class="Spotify"] $WS04
+assign [class="Clementine"] $WS14
+assign [class="Spotify"] $WS14
 assign [class="Audacious"] $WS04
-assign [class="Thunar"] $WS05
-assign [class="Nautilus"] $WS05
-assign [class="Thunderbird"] $WS06
-assign [class="Icedove"] $WS06
-assign [class="Pidgin"] $WS06
-assign [class="Empathy"] $WS06
+assign [class="Thunar"] $WS15
+assign [class="Nautilus"] $WS15
+assign [class="Thunderbird"] $WS16
+assign [class="Icedove"] $WS16
+assign [class="Pidgin"] $WS16
+assign [class="Empathy"] $WS16
 assign [class="VirtualBox"] $WS05
 assign [class="Gitk"] $WS12
 
 ##Shortcuts
 bindsym Control+$mod+w exec xdg-open https://www.google.com
-bindsym Control+$mod+t exec urxvt -e bash -c 'tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME' && i3-msg "[class=URxvt] focus"
+bindsym Control+$mod+t exec urxvt -e zsh -c 'tmux -q has-session && exec tmux attach-session || exec tmux new-session -n$USER -s$USER@$HOSTNAME' && i3-msg "[class=URxvt] focus"
 bindsym Control+$mod+f exec thunar && i3-msg "[class=Thunar] focus"
 bindsym Control+$mod+e exec gvim && i3-msg "[class=GVim] focus"
 bindsym Control+$mod+m exec thunderbird && i3-msg "[class=Thunderbird] focus"
@@ -378,7 +378,7 @@ exec --no-startup-id setxkbmap -option caps:none
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
 exec --no-startup-id xscreensaver -no-splash &
-exec --no-startup-id xautolock -detectsleep -time 15 -locker "~/.config/i3/scripts/lock.sh" -notify 30
+exec --no-startup-id xautolock -detectsleep -time 15 -notify 30 -notifier "notify-send --urgency low --expire-time=25 -- 'Locking screen in 30 seconds'" -locker "~/.config/i3/scripts/lock.sh" -notify 30
 exec --no-startup-id dunst -config ~/config/dunst/dunstrc
 exec --no-startup-id pidgin
 exec --no-startup-id megasync
