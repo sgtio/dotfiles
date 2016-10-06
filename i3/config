@@ -308,20 +308,21 @@ for_window [class="(?i)firefox"] border none
 for_window [class="(?i)uzbl-browser"] border none
 for_window [class="(?i)conky"] floating enable border none
 for_window [class="MPlayer"] floating enable border none
-for_window [instance="gimp"] floating enable
+for_window [instance="gimp"] border none layout tabbed
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
+for_window [class="(?i)VirtualBox"] border none layout tabbed
 
 ## Windows inside its workspace
-assign [class="Firefox"] $WS11
-assign [class="Navigator"] $WS01
+#assign [class="Firefox"] $WS11
+#assign [class="Navigator"] $WS01
 assign [class="URxvt"] $WS02
 assign [class="Emacs"] $WS03
 assign [class="Gedit"] $WS03
 assign [class="Gvim"] $WS03
 assign [class="Clementine"] $WS14
-assign [class="Spotify"] $WS14
+assign [class="(?i)Spotify"] $WS14
 assign [class="Audacious"] $WS04
 assign [class="Thunar"] $WS15
 assign [class="Nautilus"] $WS15
