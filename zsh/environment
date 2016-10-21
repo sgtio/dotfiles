@@ -1,10 +1,10 @@
 #!/bin/bash
 export $(dbus-launch)
-export TERM=xterm-256color
+export TERM=screen-256color
 export WINEPREFIX=~/.wine
 export WINEARCH=win32
-export EDITOR='emacsclient -t'
-export DIFFPROG='meld'
+export EDITOR='vim'
+export DIFFPROG='kdiff3'
 export PATH=$PATH:/home/sejo/.gem/ruby/2.2.0/bin 
 export SWT_GTK3=1
 
@@ -28,4 +28,6 @@ export LESS_TERMCAP_so=$(printf "\e[0;37;102m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[4;32m")
 
+# GCC colorize output
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 

@@ -7,5 +7,5 @@ alias rpi='ssh -l user user.duckdns.org -p 2001'
 alias pchome='ssh -p 2002 user@user.duckdns.org'
 alias pchomenew='ssh -p 2002 user@user.duckdns.org' 
 alias emc='emc -nw'
-alias journalctl="sudo journalctl"
 alias ls='ls -F --color'
+alias cal='ncal -Mwb -B1 -A1'
