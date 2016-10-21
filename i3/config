@@ -75,23 +75,15 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# Switch between workspaces in a fast way
+bindsym $mod+Right workspace next
+bindsym $mod+Left workspace prev
 
 # split in horizontal orientation
 bindsym $mod+b split horizontal
@@ -159,16 +151,16 @@ bindsym $mod+9 workspace $WS09
 bindsym $mod+0 workspace $WS10
 
 # switch to workspace on secondary monitor
-bindsym $mod+Control+1 workspace $WS11
-bindsym $mod+Control+2 workspace $WS12
-bindsym $mod+Control+3 workspace $WS13
-bindsym $mod+Control+4 workspace $WS14
-bindsym $mod+Control+5 workspace $WS15; layout tabbed
-bindsym $mod+Control+6 workspace $WS16; layout tabbed
-bindsym $mod+Control+7 workspace $WS17
-bindsym $mod+Control+8 workspace $WS18
-bindsym $mod+Control+9 workspace $WS19
-bindsym $mod+Control+0 workspace $WS20
+bindsym $mod+F1 workspace $WS11
+bindsym $mod+F2 workspace $WS12
+bindsym $mod+F3 workspace $WS13
+bindsym $mod+F4 workspace $WS14
+bindsym $mod+F5 workspace $WS15; layout tabbed
+bindsym $mod+F6 workspace $WS16; layout tabbed
+bindsym $mod+F7 workspace $WS17
+bindsym $mod+F8 workspace $WS18
+bindsym $mod+F9 workspace $WS19
+bindsym $mod+F10 workspace $WS20
 
 
 # move focused container to workspace on primary monitor
@@ -184,16 +176,16 @@ bindsym $mod+Shift+9 move container to workspace $WS09
 bindsym $mod+Shift+0 move container to workspace $WS10
 
 # move focused container to workspace on secondary monitor
-bindsym $mod+Control+Shift+1 move container to workspace $WS11
-bindsym $mod+Control+Shift+2 move container to workspace $WS12
-bindsym $mod+Control+Shift+3 move container to workspace $WS13
-bindsym $mod+Control+Shift+4 move container to workspace $WS14
-bindsym $mod+Control+Shift+5 move container to workspace $WS15
-bindsym $mod+Control+Shift+6 move container to workspace $WS16
-bindsym $mod+Control+Shift+7 move container to workspace $WS17
-bindsym $mod+Control+Shift+8 move container to workspace $WS18
-bindsym $mod+Control+Shift+9 move container to workspace $WS19
-bindsym $mod+Control+Shift+0 move container to workspace $WS20
+bindsym $mod+Shift+F1 move container to workspace $WS11
+bindsym $mod+Shift+F2 move container to workspace $WS12
+bindsym $mod+Shift+F3 move container to workspace $WS13
+bindsym $mod+Shift+F4 move container to workspace $WS14
+bindsym $mod+Shift+F5 move container to workspace $WS15
+bindsym $mod+Shift+F6 move container to workspace $WS16
+bindsym $mod+Shift+F7 move container to workspace $WS17
+bindsym $mod+Shift+F8 move container to workspace $WS18
+bindsym $mod+Shift+F9 move container to workspace $WS19
+bindsym $mod+Shift+F10 move container to workspace $WS20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
