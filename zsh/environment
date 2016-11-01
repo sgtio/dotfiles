@@ -1,5 +1,6 @@
 #!/bin/bash
 export $(dbus-launch)
+export BROWSER=chromium
 export TERM=screen-256color
 export WINEPREFIX=~/.wine
 export WINEARCH=win32
