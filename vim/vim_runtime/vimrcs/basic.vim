@@ -139,8 +139,6 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=e
     set guitablabel=%M\ %t
-" else
-"	set t_Co=256
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -171,9 +169,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 150 characters
+" Linebreak on 80 characters
 set lbr
-set tw=150
+set tw=80
 
 set autoindent "Auto indent
 set smartindent "Smart indent

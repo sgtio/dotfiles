@@ -1,11 +1,9 @@
 #!/bin/bash
-alias pacman-update='sudo pacman -Syyu && yaourt -Syyua'
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias vi='vim'
 alias python='python2'
-alias rpi='ssh -l user user.duckdns.org -p 2001'
-alias pchome='ssh -p 2002 user@user.duckdns.org'
-alias pchomenew='ssh -p 2002 user@user.duckdns.org' 
 alias emc='emc -nw'
 alias ls='ls -F --color'
 alias cal='ncal -Mwb -B1 -A1'
+alias pu="pushd . > /dev/null"
+alias po='popd >/dev/null'
+alias tig='git log --graph --oneline --decorate'
