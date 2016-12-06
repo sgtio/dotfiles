@@ -1,5 +1,5 @@
 #!/bin/bash
-icon="$HOME/.config/i3/scripts/lock.png"
+icon="$HOME/.config/scripts/lock.png"
 tmpbg="$HOME/tmp/xscreensaver/locked.png"
 
 (( $# )) && { icon=$1; }

@@ -356,10 +356,25 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 
-##Shutdown mode
-# Create Log out, Reboot, Poweroff bindings
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Select an action.' -b 'Shutdown' 'systemctl poweroff' -b 'Reboot' 'systemctl reboot' -b 'Logout' 'i3-msg exit' -b 'Lock' '~/.config/scripts/lock.sh'"
+##System mode
+# Enter and exit system mod with $mod + pause
+set $LockNow xautolock -locknow
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $LockNow, mode "default"
+    bindsym Shift+e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $LockNow && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $LockNow && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_system"
 
 ##Executing files on logon
 exec --no-startup-id xrandr --output $primary_monitor --auto --output $second_monitor --auto $second_monitor_position $primary_monitor
