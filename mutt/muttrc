@@ -14,6 +14,10 @@ bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
 
+# Index bindings
+bind index R    "group-reply" # reply to all recipients
+bind index L    "list-reply"  # reply to specified mailing list
+
 # Signature
 set signature="$HOME/.mutt/signature.muttrc"
 
