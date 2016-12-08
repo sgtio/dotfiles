@@ -272,18 +272,18 @@ bar {
     status_command i3status -c ~/.config/i3/i3status.conf
     position top
     tray_output primary
-    font pango:DejaVu Sans Book 12
+    font pango:DejaVu Sans Book 11
     colors {
     ## Set colors       
 	background          $base03
-	statusline          $base01
+	statusline          $base10
 	separator           $base01
                          
                         #border    #background    #text 
-	focused_workspace   $yellow    $yellow        $base03
-	active_workspace    $base01    $base01        $base03
-	inactive_workspace  $base03    $base03        $base10
-	urgent_workspace    $red       $red           $base13
+	focused_workspace   $green     $base03        $green
+	active_workspace    $base11    $base03        $base11
+	inactive_workspace  $base03    $base03        $base11
+	urgent_workspace    $red       $base03        $base01
 	}
 }
 
