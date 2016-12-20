@@ -47,6 +47,7 @@ au FileType javascript setl nocindent
 
 
 """"""""""""""""""""""""""""""
-" => CoffeeScript section
+" => Git commit section
 """""""""""""""""""""""""""""""
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
+au FileType gitcommit set tw=72
