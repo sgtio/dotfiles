@@ -15,8 +15,8 @@ bind attach,index g first-entry
 bind attach,index G last-entry
 
 # Index bindings
-bind index R    "group-reply" # reply to all recipients
-bind index L    "list-reply"  # reply to specified mailing list
+bind index,pager R "group-reply" # reply to all recipients
+bind index,pager L "list-reply"  # reply to specified mailing list
 
 # Signature
 set signature="$HOME/.mutt/signature.muttrc"
@@ -57,3 +57,5 @@ source "$HOME/.mutt/pop.muttrc"
 source "$HOME/.mutt/smtp.muttrc"
 
 #####################################################
+# Mailing lists
+source "$HOME/.mutt/mail-list.muttrc"
