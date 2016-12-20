@@ -11,7 +11,7 @@ pcm.dmixer  {
         period_time 0
         period_size 1024
         buffer_size 8192
-        rate 48000
+        rate "unchanged" 
     }
     bindings {
         0 0
