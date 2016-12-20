@@ -363,7 +363,7 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) re
 
 mode "$mode_system" {
     bindsym l exec --no-startup-id $LockNow, mode "default"
-    bindsym Shift+e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $LockNow && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $LockNow && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
@@ -379,8 +379,6 @@ bindsym $mod+Pause mode "$mode_system"
 ##Executing files on logon
 exec --no-startup-id xrandr --output $primary_monitor --auto --output $second_monitor --auto $second_monitor_position $primary_monitor
 exec --no-startup-id compton --config ~/.config/compton/compton.conf --shadow-exclude '!focused' -b
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id numlockx on
 exec --no-startup-id setxkbmap -option caps:none
 exec --no-startup-id nm-applet
