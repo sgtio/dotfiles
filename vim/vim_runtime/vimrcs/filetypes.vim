@@ -38,6 +38,11 @@ au FileType python map <buffer> <leader>2 /def
 au FileType python map <buffer> <leader>C ?class 
 au FileType python map <buffer> <leader>D ?def 
 
+"""""""""""""""""""""""""""""""
+" => Bitbake section
+""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.bb set filetype=bitbake
+au BufNewFile,BufRead *.bbappend set filetype=bitbake
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
