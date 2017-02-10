@@ -231,6 +231,17 @@ mode "resize" {
         bindsym $mod+Up resize shrink height 2 px or 2 ppt
         bindsym $mod+Right resize grow width 2 px or 2 ppt
 
+        #Bindings for fast resizing Shift key
+        bindsym Shift+h resize shrink width 20 px or 20 ppt
+        bindsym Shift+j resize grow height 20 px or 20 ppt
+        bindsym Shift+k resize shrink height 20 px or 20 ppt
+        bindsym Shift+l resize grow width 20 px or 20 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Shift+Left resize shrink width 20 px or 20 ppt
+        bindsym Shift+Down resize grow height 20 px or 20 ppt
+        bindsym Shift+Up resize shrink height 20 px or 20 ppt
+        bindsym Shift+Right resize grow width 20 px or 20 ppt
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -277,12 +288,12 @@ bar {
     tray_output primary
     font pango:DejaVu Sans Book 11
     colors {
-    ## Set colors       
+    ## Set colors
 	background          $base03
 	statusline          $base10
 	separator           $base01
-                         
-                        #border    #background    #text 
+
+                        #border    #background    #text
 	focused_workspace   $green     $base03        $green
 	active_workspace    $base11    $base03        $base11
 	inactive_workspace  $base03    $base03        $base11
@@ -370,7 +381,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $LockNow && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $LockNow && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
