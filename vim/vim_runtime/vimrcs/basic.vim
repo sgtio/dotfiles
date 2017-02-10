@@ -159,19 +159,20 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set noexpandtab
-
-" Be smart when using tabs ;)
-set smarttab
-
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
+set softtabstop=0
 
 " Linebreak on 80 characters
 set lbr
 set tw=80
+
+" Use tabs for indentation
+set noexpandtab
+
+" Be smart when using tabs ;)
+set smarttab
 
 set autoindent "Auto indent
 set smartindent "Smart indent
