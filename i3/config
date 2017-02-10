@@ -92,7 +92,10 @@ bindsym $mod+b split horizontal
 bindsym $mod+v split vertical
 
 # enter fullscreen mode for the focused container (not working?)
-#bindsym $mod+f toggle fullscreen
+bindsym $mod+f fullscreen
+
+# popups during fullscreen
+popup_during_fullscreen smart
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
