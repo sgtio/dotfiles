@@ -78,7 +78,7 @@
 # 1. View
 ###############################################################################
 
-set blame-view  = date:author:full file-name:auto id:yes,color line-number:no,interval=5 text
+set blame-view  = date:short author:full file-name:auto id:yes,color line-number:no,interval=5 text
 set grep-view   = file-name:no line-number:yes,interval=1 text
 set main-view   = line-number:no,interval=5 id:no date:short author:full commit-title:yes,graph,refs,overflow=no
 set refs-view   = date:default author:full ref commit-title
