@@ -6,8 +6,8 @@ URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 
 ! Font
-URxvt.font: xft:DejaVu Sans Mono:size=11:antialias=true:hinting=true
-!URxvt.letterSpace: -1
+URxvt.font: xft:Iosevka:size=12:antialias=true:hinting=true
+URxvt.boldfont: xft:Iosevka:bold:size=12:antialias=true:hinting=true
 
 
 !Perl extensions
