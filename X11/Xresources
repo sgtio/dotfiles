@@ -23,7 +23,7 @@ URxvt.matcher.button: 1
 URxvt.scrollBar: false
 
 !Colors
-URxvt*depth:              32
+URxvt*depth:                    32
 !URxvt*background:              #232830
 !URxvt*foreground:              #fafafa
 !URxvt*cursorColor:             #2e64fe
