@@ -391,7 +391,6 @@ exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
 exec --no-startup-id xscreensaver -no-splash &
 exec --no-startup-id xautolock -detectsleep -time 15 -notify 30 -notifier "notify-send --urgency low --expire-time=25 -- 'Locking screen in 30 seconds'" -locker "~/.config/scripts/lock.sh" -notify 30
 exec --no-startup-id dunst -config ~/config/dunst/dunstrc
-exec --no-startup-id pidgin
 exec --no-startup-id megasync
 #exec --no-startup-id conky -c ~/.config/conky/conkyrc
 #exec --no-startup-id xfce4-power-manager
