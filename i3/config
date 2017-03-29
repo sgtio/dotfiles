@@ -273,7 +273,7 @@ set $custom   #1c5766
 
 
 # set client theme          border     background  text
-client.focused              $yellow    $yellow     $base03
+client.focused              $magenta   $magenta    $base03
 client.unfocused            $base02    $base02     $base10
 client.focused_inactive     $base02    $base02     $base10
 client.urgent               $red       $red        $base13
@@ -293,10 +293,10 @@ bar {
 	separator           $base01
 
                         #border    #background    #text
-	focused_workspace   $green     $base03        $green
-	active_workspace    $base11    $base03        $base11
-	inactive_workspace  $base03    $base03        $base11
-	urgent_workspace    $red       $base03        $base01
+	focused_workspace   $green     $green         $base03
+	active_workspace    $cyan      $cyan          $base03
+	inactive_workspace  $base01    $base01        $base03
+	urgent_workspace    $red       $red           $base13
 	}
 }
 
