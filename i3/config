@@ -314,8 +314,6 @@ for_window [title="Preferences$"] floating enable
 for_window [class="(?i)VirtualBox"] layout tabbed
 
 ## Windows inside its workspace
-#assign [class="Firefox"] $WS11
-#assign [class="Navigator"] $WS01
 assign [class="URxvt"] $WS02
 assign [class="Emacs"] $WS03
 assign [class="Gedit"] $WS03
