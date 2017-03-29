@@ -48,19 +48,11 @@ call dein#add('Shougo/dein.vim')
 " Begin list of plugins:
 call dein#add('altercation/vim-colors-solarized.git')
 call dein#add('jlanzarotta/bufexplorer')
-call dein#add('mru.vim')
-call dein#add('maxbrunsfeld/vim-yankstack')
-call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('mattn/emmet-vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('itchyny/lightline.vim')
-call dein#add('junegunn/goyo.vim')
-call dein#add('scrooloose/syntastic')
-call dein#add('airblade/vim-gitgutter')
 call dein#add('mileszs/ack.vim')
 call dein#add('christoomey/vim-tmux-navigator')
-" call dein#add('Valloric/YouCompleteMe')
 " End list of plugins
 
 call dein#end()
@@ -79,45 +71,6 @@ nnoremap <silent> <M-F12> :BufExplorer<CR>
 nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
 
-""""""""""""""""""""""""""""""
-" => MRU plugin
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
-" => YankStack
-""""""""""""""""""""""""""""""
-nmap <c-p> <Plug>yankstack_substitute_older_paste
-nmap <c-P> <Plug>yankstack_substitute_newer_paste
-
-
-""""""""""""""""""""""""""""""
-" => CTRL-P
-""""""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 'ra' 
-let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
-map <c-b> :CtrlPBuffer<cr>
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-
-
-""""""""""""""""""""""""""""""
-" => Emmet
-""""""""""""""""""""""""""""""
-" Enable all functions in all modes
-let g:user_emmet_mode='a'
-
-
-""""""""""""""""""""""""""""""
-" => Vim grep
-""""""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
-set grepprg=/bin/grep\ -nH
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -129,20 +82,10 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:multi_cursor_next_key="\<C-s>"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => surround.vim config
-" Annotate strings with gettext http://amix.dk/blog/post/19678
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vmap Si S(i_<esc>f)
-au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
@@ -184,56 +127,6 @@ function! s:syntastic()
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Goyo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:goyo_width=100
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic (syntax checker)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python
-"let g:syntastic_python_checkers=['pyflakes']
-
-" Javascript
-"let g:syntastic_javascript_checkers = ['jshint']
-
-" Go
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
-
-" Custom CoffeeScript SyntasticCheck
-func! SyntasticCheckCoffeescript()
-    let l:filename = substitute(expand("%:p"), '\(\w\+\)\.coffee', '.coffee.\1.js', '')
-    execute "tabedit " . l:filename
-    execute "SyntasticCheck"
-    execute "Errors"
-endfunc
-nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
-
-" General recommended settings"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 3
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Git gutter (Git diff)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_enabled=0
-nnoremap <silent> <leader>d :GitGutterToggle<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack (replacement for vim grep)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ackprg = 'ag --vimgrep --smart-case'
@@ -244,9 +137,4 @@ cnoreabbrev AG Ack
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-TMUX
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Youcompleteme (Code completion)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
