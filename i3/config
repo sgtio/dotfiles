@@ -301,23 +301,17 @@ bar {
 }
 
 ## No window decoration
-for_window [class="^.*"] none
-new_window none
-#bindsym Control+$mod+1 [class="^.*"] border normal
-#bindsym Control+$mod+2 [class="^.*"] border none
-##Specific window rules
+for_window [class="^.*"] pixel 1
+new_window pixel 1
 
-for_window [class="(?i)chromium"] border none
-for_window [class="(?i)URxvt"] border none
-for_window [class="(?i)firefox"] border none
-for_window [class="(?i)uzbl-browser"] border none
-for_window [class="(?i)conky"] floating enable border none
-for_window [class="MPlayer"] floating enable border none
-for_window [instance="gimp"] border none layout tabbed
+##Specific window rules
+for_window [class="(?i)conky"] floating enable
+for_window [class="MPlayer"] floating enable
+for_window [instance="gimp"] layout tabbed
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
-for_window [class="(?i)VirtualBox"] border none layout tabbed
+for_window [class="(?i)VirtualBox"] layout tabbed
 
 ## Windows inside its workspace
 #assign [class="Firefox"] $WS11
