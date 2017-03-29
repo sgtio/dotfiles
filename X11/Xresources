@@ -14,7 +14,7 @@ URxvt.boldfont: xft:Iosevka:bold:size=12:antialias=true:hinting=true
 URxvt.perl-ext-common: default,matcher,tabber
 
 !Clickable URL
-URxvt.url-launcher:  /usr/bin/env chromium
+URxvt.url-launcher:  /usr/bin/env x-www-browser
 URxvt.matcher.button: 1
 
 !Scrollbar
