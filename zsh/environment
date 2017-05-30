@@ -5,8 +5,7 @@ export TERM=screen-256color
 export WINEPREFIX=~/.wine
 export WINEARCH=win32
 export EDITOR='vim'
-export DIFFPROG='kdiff3'
-export PATH=$PATH:/home/sejo/.gem/ruby/2.2.0/bin 
+export DIFFPROG='vimdiff'
 export SWT_GTK3=1
 
 #LS settings
@@ -32,3 +31,5 @@ export LESS_TERMCAP_us=$(printf "\e[4;32m")
 # GCC colorize output
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Set the language variable
+export LANG=en_US.UTF-8
