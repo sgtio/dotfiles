@@ -34,9 +34,9 @@ if has("mac") || has("macunix")
 elseif has("win16") || has("win32")
     set gfn=Hack:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
 elseif has("gui_gtk2")
-    set gfn=Iosevka\ 12,Inconsolata\ 14,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11
+    set gfn=Iosevka\ Term\ 12,Inconsolata\ 14,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11
 elseif has("linux")
-    set gfn=Iosevka\ 12,Inconsolata\ 14,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11
+    set gfn=Iosevka\ Term\ 12,Inconsolata\ 14,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11
 elseif has("unix")
     set gfn=Monospace\ 13
 endif
@@ -57,6 +57,9 @@ set guioptions-=L
 set background=dark
 
 try
+    let g:solarized_termcolors=16
+    let g:solarized_visibility="high"
+    let g:solarized_hitrail=1    "default value is 0
     colorscheme solarized
 catch
 endtry
