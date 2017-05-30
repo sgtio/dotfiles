@@ -1,11 +1,13 @@
-
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
+# i3 configuration
+#
+# @author: Sergio Ruiz
+# @date: 20th March 2017
+# 
+# Sections:
+# - TODO
+#
 #
 
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
@@ -189,12 +191,13 @@ bindsym $mod+Shift+F8 move container to workspace $WS18
 bindsym $mod+Shift+F9 move container to workspace $WS19
 bindsym $mod+Shift+F10 move container to workspace $WS20
 
+# Automatic back and forth
+workspace_auto_back_and_forth yes
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 focus_follows_mouse yes
 mouse_warping output
@@ -203,10 +206,10 @@ mouse_warping output
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # Pressing h will shrink the window’s width.
+        # Pressing l will grow the window’s width.
+        # Pressing k will shrink the window’s height.
+        # Pressing j will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -300,7 +303,7 @@ bar {
 	}
 }
 
-## No window decoration
+## Small window decoration
 for_window [class="^.*"] pixel 1
 new_window pixel 1
 
@@ -351,15 +354,11 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
-# Touchpad controls
-# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
-
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
 
 ##System mode
 # Enter and exit system mod with $mod + pause
@@ -388,12 +387,6 @@ exec --no-startup-id numlockx on
 exec --no-startup-id setxkbmap -option caps:none
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
-exec --no-startup-id xscreensaver -no-splash &
 exec --no-startup-id xautolock -detectsleep -time 15 -notify 30 -notifier "notify-send --urgency low --expire-time=25 -- 'Locking screen in 30 seconds'" -locker "~/.config/scripts/lock.sh" -notify 30
 exec --no-startup-id dunst -config ~/config/dunst/dunstrc
 exec --no-startup-id megasync
-#exec --no-startup-id conky -c ~/.config/conky/conkyrc
-#exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id blueman-applet
-#exec --no-startup-id empathy
-#exec --no-startup-id thunderbird
