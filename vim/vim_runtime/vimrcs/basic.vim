@@ -166,7 +166,10 @@ set softtabstop=0
 
 " Linebreak on 80 characters
 set lbr
-set tw=80
+set textwidth=80
+
+" Set a visual line on textwidth+1
+set colorcolumn=+1
 
 " Use tabs for indentation
 set noexpandtab
