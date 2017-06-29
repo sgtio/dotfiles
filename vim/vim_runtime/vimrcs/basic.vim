@@ -345,7 +345,7 @@ map <leader>wl :set list! listchars=trail:·,tab:»·<cr>
 map <leader>wf /\s\+$
 
 " Set tag file possible locations
-set tags+=./.git/tags,.git/tags
+set tags+=./tags;
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
