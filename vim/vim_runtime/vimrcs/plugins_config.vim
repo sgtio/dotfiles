@@ -2,18 +2,18 @@
 " File name: plugins_config.vim
 "
 " File description: Plugins configuration
-" 
 "
-" Maintainer: 
+"
+" Maintainer:
 "       Sergio Ruiz
 "       https://sejoruiz.github.io - sejoruiz@gmail.com
 "
-" Version: 
+" Version:
 "       0.1 - 12/07/2016
 "
 "
 " Sections:
-"    -> Dein 
+"    -> Dein
 "    -> bufExplorer
 "    -> MRU plugin
 "    -> YankStack
@@ -53,6 +53,8 @@ call dein#add('terryma/vim-multiple-cursors')
 call dein#add('itchyny/lightline.vim')
 call dein#add('mileszs/ack.vim')
 call dein#add('christoomey/vim-tmux-navigator')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('tpope/vim-fugitive')
 " End list of plugins
 
 call dein#end()
@@ -137,4 +139,12 @@ cnoreabbrev AG Ack!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-TMUX
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => gitgutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
