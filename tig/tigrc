@@ -164,7 +164,8 @@ set show-notes              = yes       # When non-bool passed as `--show-notes=
 #   %(diffargs)     The diff options from `diff-options` or `TIG_DIFF_OPTS`
 #   %(prompt)       Prompt for the argument value.
 
-bind main   C   ?git cherry-pick %(commit)
+bind main   C   ?git checkout %(commit)
+bind main   R   ?git rebase -i %(commit)~1
 bind status C   !git commit
 bind stash  P   ?git stash pop %(stash)
 bind stash  !   ?git stash drop %(stash)
