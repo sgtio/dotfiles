@@ -335,7 +335,7 @@ assign [class="Gitk"] $WS12
 
 ##Shortcuts
 bindsym Control+$mod+w exec xdg-open https://www.google.com
-bindsym Control+$mod+t exec urxvt -e zsh -c 'tmux -q has-session && exec tmux attach-session || exec tmux new-session -n$USER -s$USER@$HOSTNAME' && i3-msg "[class=URxvt] focus"
+bindsym Control+$mod+t exec st -e 'tmux'
 bindsym Control+$mod+f exec thunar && i3-msg "[class=Thunar] focus"
 bindsym Control+$mod+e exec gvim && i3-msg "[class=GVim] focus"
 bindsym Control+$mod+m exec thunderbird && i3-msg "[class=Thunderbird] focus"
