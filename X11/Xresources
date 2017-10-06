@@ -6,9 +6,8 @@ URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 
 ! Font
-URxvt.font: xft:Iosevka:size=12:antialias=true:hinting=true
-URxvt.boldfont: xft:Iosevka:bold:size=12:antialias=true:hinting=true
-
+URxvt.font: xft:Iosevka Term:size=12:antialias=true:hinting=true
+URxvt.boldfont: xft:Iosevka Term:bold:size=12:antialias=true:hinting=true
 
 !Perl extensions
 URxvt.perl-ext-common: default,matcher,tabber
@@ -24,11 +23,6 @@ URxvt.scrollBar: false
 
 !Colors
 URxvt*depth:                    32
-!URxvt*background:              #232830
-!URxvt*foreground:              #fafafa
-!URxvt*cursorColor:             #2e64fe
-
-! *color12:		       #2e64fe
 
 !Mouse
 Xcursor.theme: Oxygen_White
