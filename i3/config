@@ -287,7 +287,7 @@ bar {
     mode dock
     status_command i3status -c ~/.config/i3/i3status.conf
     position top
-    tray_output primary
+    tray_output $primary_monitor
     font pango:Iosevka 10
     colors {
     ## Set colors
