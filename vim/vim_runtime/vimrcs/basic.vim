@@ -344,6 +344,10 @@ map <leader>pp :setlocal paste!<cr>
 map <leader>wl :set list! listchars=trail:·,tab:»·<cr>
 map <leader>wf /\s\+$
 
+" Display tabs and trailing spaces
+set listchars=tab:»·,trail:·
+set list
+
 " Set tag file possible locations
 set tags+=./tags;
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

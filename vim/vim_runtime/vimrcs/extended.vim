@@ -9,8 +9,7 @@
 "       https://sejoruiz.github.io - sejoruiz@gmail.com
 "
 " Version: 
-"       0.1 - 12/07/2016
-"
+"       0.1 - 12/07/2016 "
 "
 " Sections:
 "    -> GUI Related
@@ -58,12 +57,19 @@ set background=dark
 
 try
     let g:solarized_termcolors=16
-    let g:solarized_visibility="high"
+    let g:solarized_visibility="normal"
     let g:solarized_hitrail=1    "default value is 0
     colorscheme solarized
 catch
 endtry
 
+" Highlight trailing tabs and spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
@@ -73,7 +79,7 @@ autocmd! bufwritepost vimrc source ~/.vim_runtime/my_configs.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Turn persistent undo on 
+" => Turn persistent undo on
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
@@ -119,7 +125,7 @@ func! DeleteTillSlash()
         else
             let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
         endif
-    endif   
+    endif
 
     return g:cmd_edited
 endfunc
