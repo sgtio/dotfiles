@@ -166,7 +166,6 @@ bindsym $mod+F8 workspace $WS18
 bindsym $mod+F9 workspace $WS19
 bindsym $mod+F10 workspace $WS20
 
-
 # move focused container to workspace on primary monitor
 bindsym $mod+Shift+1 move container to workspace $WS01
 bindsym $mod+Shift+2 move container to workspace $WS02
@@ -390,3 +389,6 @@ exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
 exec --no-startup-id xautolock -detectsleep -time 15 -notify 30 -notifier "notify-send --urgency low --expire-time=25 -- 'Locking screen in 30 seconds'" -locker "~/.config/scripts/lock.sh" -notify 30
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id megasync
+
+## Start on WS01
+exec --no-startup-id i3-msg workspace $WS01
