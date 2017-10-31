@@ -287,19 +287,18 @@ bar {
     status_command i3status -c ~/.config/i3/i3status.conf
     position top
     tray_output $primary_monitor
-    font pango:Iosevka Term 10
     colors {
-    ## Set colors
-	background          $base03
-	statusline          $base10
-	separator           $base01
+        ## Set colors
+        background          $base03
+        statusline          $base10
+        separator           $base01
 
-                        #border    #background    #text
-	focused_workspace   $green     $green         $base03
-	active_workspace    $cyan      $cyan          $base03
-	inactive_workspace  $base01    $base01        $base03
-	urgent_workspace    $red       $red           $base13
-	}
+                            #border    #background    #text
+        focused_workspace   $green     $green         $base03
+        active_workspace    $cyan      $cyan          $base03
+        inactive_workspace  $base01    $base01        $base03
+        urgent_workspace    $red       $red           $base13
+    }
 }
 
 ## Small window decoration
