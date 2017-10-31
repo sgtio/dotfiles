@@ -6,8 +6,9 @@ URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 
 ! Font
-URxvt.font: xft:Iosevka Term:size=12:antialias=true:hinting=true
-URxvt.boldfont: xft:Iosevka Term:bold:size=12:antialias=true:hinting=true
+URxvt.font: xft:Iosevka Term:size=14:antialias=true:hinting=true
+URxvt.boldfont: xft:Iosevka Term:bold:size=14:antialias=true:hinting=true
+URxvt.intensityStyles: false
 
 !Perl extensions
 URxvt.perl-ext-common: default,matcher,tabber
