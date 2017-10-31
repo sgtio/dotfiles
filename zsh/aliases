@@ -1,9 +1,8 @@
 #!/bin/bash
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias python='python2'
-alias ls='ls -F --color'
+alias ls='ls -F --color --quoting-style=escape'
 alias cal='ncal -Mwb -B1 -A1'
-alias tig='git log --graph --oneline --decorate'
 alias tags='ctags -R -f ./tags'
 
 function com {
@@ -21,7 +20,7 @@ function pilog() {
 	if [ -z $1 ]; then
 		tail -n +0  -f /tmp/picocom.log
 	else
-		tail -n +0  -f /tmp/picocom.log | grep --binary-file=text $@ 
+		tail -n +0  -f /tmp/picocom.log | grep --binary-file=text $@
 	fi
 }
 
@@ -31,7 +30,7 @@ function rbg() {
 		echo "Usage: rbg <command> <args>"
 		return 1
 	fi
-	
+
 	echo "Logs in /tmp/rbg.log"
 	eval "$@" 2>&1 > /tmp/rbg.log &
 	disown %2
@@ -44,7 +43,7 @@ function obg() {
 		echo "Usage: obg <command> <args>"
 		return 1
 	fi
-	
+
 	echo "Logs in /tmp/obg.log"
 	eval xdg-open "$@" 2>&1 > /tmp/obg.log &
 	disown %2
