@@ -378,6 +378,22 @@ mode "$mode_system" {
 
 bindsym $mod+Home mode "$mode_system"
 
+##Multiscreen mode
+# Enter multiscreen mode with $mod + Page Up
+set $mode_multiscreen (1) Single screen, (2) Dual monitor, (3) Three monitors
+
+mode "$mode_multiscreen" {
+    bindsym 1 exec --no-startup-id xrandr --output $primary_monitor --off --output $second_monitor --off --output $third_monitor --auto, mode "default"
+    bindsym 2 exec --no-startup-id xrandr --output $primary_monitor --auto --output $second_monitor --auto $second_monitor_position $primary_monitor --output $third_monitor --off, mode "default"
+    bindsym 3 exec --no-startup-id xrandr --output $primary_monitor --auto --output $second_monitor --auto $second_monitor_position $primary_monitor --output $third_monitor --auto $third_monitor_position $primary_monitor, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Prior mode "$mode_multiscreen"
+
 ##Executing files on logon
 exec --no-startup-id xrandr --output $primary_monitor --auto --output $second_monitor --auto $second_monitor_position $primary_monitor
 exec --no-startup-id compton --config ~/.config/compton/compton.conf --shadow-exclude '!focused' -b
