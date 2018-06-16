@@ -68,6 +68,35 @@ function install_pkg() {
 		curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh >$TMP_DIR/zsh-installer.sh &&
 			sh $TMP_DIR/zsh-installer.sh
 	}
+
+	command -v st 2>&1 >/dev/null || {
+		local src_dir=$HOME/src
+		local st_version=0.8.1
+		local st_src=$src_dir/st-$st_version
+		local st_tar=$src_dir/st-$st_version.tar.gz
+
+		[ -e $st_tar ] && do_backup $st_tar
+		[ -d $st_src ] && do_backup $st_src
+
+		echo "Installing st"
+		echo " * Checking out source code"
+		mkdir -p $src_dir
+		wget -q -P $src_dir https://dl.suckless.org/st/st-$st_version.tar.gz
+		echo " * Uncompressing the source code"
+		tar -xvf $st_tar -C $src_dir
+		rm -f $st_tar
+		echo " * Downloading and applying patches:"
+		echo "    - No bold colors"
+		wget -q -O $st_src/no-bold-colors.diff https://st.suckless.org/patches/solarized/st-no_bold_colors-$st_version.diff
+		patch -s -d $st_src -i $st_src/no-bold-colors.diff
+		echo "    - Solarized"
+		wget -q -O $st_src/solarized.diff https://st.suckless.org/patches/solarized/st-solarized-both-$st_version.diff
+		patch -s -d $st_src -i $st_src/solarized.diff
+		echo " * Compiling the source code"
+		make -s -C $st_src
+		echo " * Installing st"
+		sudo make -s -C $st_src install
+	}
 }
 
 function set_configuration() {
