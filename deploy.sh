@@ -10,7 +10,6 @@ function print_header {
 	printf "\n===============================================\n"
 	echo " $@"
 	echo "==============================================="
-
 }
 
 function do_backup() {
@@ -120,7 +119,7 @@ function set_configuration() {
 
 	echo " * Setting up dunst"
 	[ -e $HOME/.dunstrc ] && do_backup $HOME/.dunstrc
-	ln -s $dotfiles/dunst/.dunstrc $HOME/.dunstrc
+	ln -s $dotfiles/dunst/dunstrc $HOME/.dunstrc
 
 	echo " * Setting up i3"
 	[ -d $HOME/.config/i3 ] && do_backup $HOME/.config/i3
@@ -146,7 +145,7 @@ function deploy() {
 	detect_distro pkg_mgr pkg_mgr_install pkg_list
 
 	print_header "Installing all dependencies"
-	install_deps $pkg_mgr "$pkg_mgr_install" "$pkg_list"
+	$pkg_mgr "$pkg_mgr_install" "$pkg_list"
 
 	print_header "Setting up configuration"
 	set_configuration
@@ -155,3 +154,4 @@ function deploy() {
 }
 
 TMP_DIR=/tmp
+deploy
