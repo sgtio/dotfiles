@@ -24,10 +24,10 @@ function do_backup() {
 function detect_distro() {
 	[ $# -eq 3 ] || error "detect_distro: Wrong number of args"
 
-	local arch_pkg_list="xautolock curl devhelp dunst feh firefox git i3   \
-		             networkmanager network-manager-applet numlockx    \
-			     pavucontrol playerctl tig tmux vim wget           \
-			     xorg-xrandr xorg-setxkbmap xorg-xbacklight zsh"
+	local arch_pkg_list="ack xautolock curl devhelp dunst feh firefox git \
+		i3 networkmanager network-manager-applet numlockx pavucontrol \
+		playerctl tig tmux gvim wget xorg-xrandr xorg-setxkbmap \
+		xorg-xbacklight zsh"
 	_pkg_mgr_var=$1
 	_pkg_mgr_inst_var=$2
 	_pkg_list_var=$3
