@@ -1,13 +1,12 @@
 #!/bin/bash
 export $(dbus-launch)
 export BROWSER=chromium
-export TERM=screen-256color
 export WINEPREFIX=~/.wine
 export WINEARCH=win32
 export EDITOR='vim'
 export DIFFPROG='vimdiff'
 export SWT_GTK3=1
-#export TERM=st-256color
+export TERM=st-256color
 
 #LS settings
 export LS_COLORS_THEMES_ROOTDIR=~/.dircolors
