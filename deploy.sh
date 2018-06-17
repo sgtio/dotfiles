@@ -162,6 +162,15 @@ function set_configuration() {
 	[ -d $HOME/.config/scripts ] && do_backup $HOME/.config/scripts
 	ln -s $dotfiles/scripts $HOME/.config/scripts
 	mkdir -p $HOME/tmp/xscreensaver
+
+	echo " * Setting up git"
+	git config --global user.name $USERNAME
+	git config --global user.email $EMAIL
+	git config --global alias.br branch
+	git config --global alias.co checkout
+	git config --global alias.ci commit
+	git config --global alias.st status
+
 }
 
 function deploy() {
@@ -189,4 +198,6 @@ function deploy() {
 }
 
 TMP_DIR=/tmp
+USERNAME=sgtio
+EMAIL=sejoruiz@gmail.com
 deploy
