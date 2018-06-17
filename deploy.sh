@@ -23,20 +23,26 @@ function do_backup() {
 }
 
 function detect_distro() {
-	[ $# -eq 3 ] || error "detect_distro: Wrong number of args"
+	[ $# -eq 4 ] || error "detect_distro: Wrong number of args"
 
-	local arch_pkg_list="ack xautolock curl devhelp dunst feh firefox git \
+	# Archlinux packages
+	local arch_pkg_list="ack curl devhelp dunst feh firefox git \
 		i3 networkmanager network-manager-applet numlockx pavucontrol \
-		playerctl tig tmux gvim wget xorg-xrandr xorg-setxkbmap \
-		xorg-xbacklight zsh"
+		playerctl powertop tig tmux gvim wget xautolock xorg-xrandr \
+		xorg-setxkbmap xorg-xbacklight zsh"
+	local arch_unofficial_pkgs="megasync skypeforlinux-stable-bin spotify \
+		ttf-iosevka-term"
+
 	_pkg_mgr_var=$1
 	_pkg_mgr_inst_var=$2
 	_pkg_list_var=$3
+	_unofficial_pkgs=$4
 
 	command -v pacman 2>&1 >/dev/null && {
 		eval $_pkg_mgr_var=pacman
 		eval $_pkg_mgr_inst_var=\"-S --noconfirm --needed\"
 		eval $_pkg_list_var="\$arch_pkg_list"
+		eval $_unofficial_pkgs="\$arch_unofficial_pkgs"
 		echo "Distribution detected: Archlinux"
 		return 0
 	}
@@ -183,7 +189,7 @@ function deploy() {
 	local pkg_mgr=""
 	local pkg_mgr_install=""
 	local pkg_list=""
-	detect_distro pkg_mgr pkg_mgr_install pkg_list
+	detect_distro pkg_mgr pkg_mgr_install pkg_list unofficial_pkgs
 
 	print_header "Installing dependencies through $pkg_mgr"
 	install_pkg $pkg_mgr "$pkg_mgr_install" "$pkg_list"
@@ -194,7 +200,10 @@ function deploy() {
 	print_header "Setting up configuration"
 	set_configuration
 
+	print_header "Done"
 	echo "Setup finished succesfully"
+	echo "You might want to install the following packages from unofficial repositories:"
+	printf "\n\t $unofficial_pkgs\n"
 }
 
 TMP_DIR=/tmp
