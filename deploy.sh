@@ -63,7 +63,9 @@ function install_pkg() {
 	printf "\n\t"
 	echo $_pkg_list
 	eval sudo $_pkg_mgr $_pkg_mgr_install $_pkg_list
+	}
 
+function install_src() {
 	[ -d $HOME/.oh-my-zsh ] || {
 		echo "Installing ohmyzsh"
 		curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh >$TMP_DIR/zsh-installer.sh &&
@@ -176,6 +178,9 @@ function deploy() {
 
 	print_header "Installing dependencies through $pkg_mgr"
 	install_pkg $pkg_mgr "$pkg_mgr_install" "$pkg_list"
+
+	print_header "Installing dependencies from source"
+	install_src
 
 	print_header "Setting up configuration"
 	set_configuration
