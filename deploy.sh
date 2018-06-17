@@ -1,4 +1,5 @@
 #!/bin/sh
+
 function error {
 	printf " *** Error:\n *** $@\n"
 	exit 1
@@ -173,8 +174,8 @@ function deploy() {
 	local pkg_list=""
 	detect_distro pkg_mgr pkg_mgr_install pkg_list
 
-	print_header "Installing all dependencies"
-	$pkg_mgr "$pkg_mgr_install" "$pkg_list"
+	print_header "Installing dependencies through $pkg_mgr"
+	install_pkg $pkg_mgr "$pkg_mgr_install" "$pkg_list"
 
 	print_header "Setting up configuration"
 	set_configuration
