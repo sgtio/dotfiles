@@ -26,10 +26,10 @@ function detect_distro() {
 	[ $# -eq 4 ] || error "detect_distro: Wrong number of args"
 
 	# Archlinux packages
-	local arch_pkg_list="ack curl devhelp dunst feh firefox git \
+	local arch_pkg_list="ack ag curl devhelp dunst feh firefox git \
 		i3 networkmanager network-manager-applet numlockx pavucontrol \
-		playerctl powertop tig tmux gvim wget xautolock xorg-xrandr \
-		xorg-setxkbmap xorg-xbacklight zsh"
+		playerctl powertop the_silver_searcher tig tmux gvim wget \
+		xautolock xorg-xrandr xorg-setxkbmap xorg-xbacklight xsel zsh"
 	local arch_unofficial_pkgs="megasync skypeforlinux-stable-bin spotify \
 		ttf-iosevka-term"
 
