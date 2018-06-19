@@ -59,8 +59,6 @@ call dein#add('tpope/vim-fugitive')
 
 call dein#end()
 
-filetype plugin indent on
-
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
 """"""""""""""""""""""""""""""
