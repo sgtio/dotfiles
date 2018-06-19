@@ -32,7 +32,7 @@ if has("mac") || has("macunix")
     set gfn=Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
 elseif has("win16") || has("win32")
     set gfn=Hack:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
-elseif has("gui_gtk2")
+elseif has("gui_gtk3")
     set gfn=Iosevka\ Term\ 12,Inconsolata\ 14,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11,PowerlineSymbols\ 12
 elseif has("linux")
     set gfn=Iosevka\ Term\ 12,Inconsolata\ 14,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11,PowerlineSymbols\ 12
