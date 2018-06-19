@@ -122,9 +122,22 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Add a bit extra margin to the left
-set foldcolumn=1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fold settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Language specific
+let javaScript_fold    = 1    " JavaScript
+let tex_fold_enabled   = 1    " LaTeX
+let r_syntax_folding   = 1    " R
+let sh_fold_enabled    = 1    " sh
+let zsh_fold_enabled   = 1    " Zsh
+let vimsyn_folding     = 'af' " Vim scripts
+let xml_syntax_folding = 1    " XML
 
+" General
+set foldcolumn=1
+set foldmethod=syntax
+au BufRead * normal zR
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
