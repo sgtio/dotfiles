@@ -287,6 +287,7 @@ bar {
     status_command i3status -c ~/.config/i3/i3status.conf
     position top
     tray_output $primary_monitor
+    font pango:Iosevka Term 10
     colors {
         ## Set colors
         background          $base03
