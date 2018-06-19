@@ -1,7 +1,7 @@
 # Tig user configuration
 #
 # name: .tigrc
-# man (5) tigrc 
+# man (5) tigrc
 ###############################################################################
 # Information
 #
@@ -25,7 +25,7 @@
 #
 ###############################################################################
 # Settings
-# 
+#
 # Most of these settings can be toggleable, either via the toggle-*
 # actions or via the option menu (bound to `o` by default).
 #
@@ -78,9 +78,9 @@
 # 1. View
 ###############################################################################
 
-set blame-view  = date:short author:full file-name:auto id:yes,color line-number:no,interval=5 text
+set blame-view  = date:default author:full file-name:auto id:yes,color line-number:no,interval=5 text
 set grep-view   = file-name:no line-number:yes,interval=1 text
-set main-view   = line-number:no,interval=5 id:no date:short author:full commit-title:yes,graph,refs,overflow=no
+set main-view   = line-number:no,interval=5 id:no date:default author:full commit-title:yes,graph,refs,overflow=no
 set refs-view   = date:default author:full ref commit-title
 set stash-view  = line-number:no,interval=5 id:no date:default author:full commit-title
 set status-view = line-number:no,interval=5 status:short file-name
@@ -154,7 +154,7 @@ set show-notes              = yes       # When non-bool passed as `--show-notes=
 #   %(remote)       The current remote name.
 #   %(tag)          The current tag name.
 #   %(stash)        The current stash name.
-#   %(directory)    The current directory path in the tree view; 
+#   %(directory)    The current directory path in the tree view;
 #                   empty for the root directory.
 #   %(file)         The currently selected file.
 #   %(ref)          The reference given to blame or HEAD if undefined.
