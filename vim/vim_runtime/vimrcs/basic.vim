@@ -50,6 +50,10 @@ command Q q
 
 " Mouse integration with VIM
 set mouse=a
+"
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -140,10 +144,6 @@ au BufRead * normal zR
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
 
 set background=dark
 set cursorline
