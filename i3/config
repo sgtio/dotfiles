@@ -310,23 +310,6 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 for_window [class="(?i)VirtualBox"] layout tabbed
 
-## Windows inside its workspace
-assign [class="URxvt"] $WS02
-assign [class="Emacs"] $WS03
-assign [class="Gedit"] $WS03
-assign [class="Gvim"] $WS03
-assign [class="Clementine"] $WS14
-assign [class="(?i)Spotify"] $WS14
-assign [class="Audacious"] $WS04
-assign [class="Thunar"] $WS15
-assign [class="Nautilus"] $WS15
-assign [class="Thunderbird"] $WS16
-assign [class="Icedove"] $WS16
-assign [class="Pidgin"] $WS16
-assign [class="Empathy"] $WS16
-assign [class="VirtualBox"] $WS05
-assign [class="Gitk"] $WS12
-
 ##Shortcuts
 bindsym Control+$mod+w exec xdg-open https://www.google.com
 bindsym Control+$mod+t exec st -e 'tmux'
