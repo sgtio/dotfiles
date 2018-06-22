@@ -27,9 +27,10 @@ function detect_distro() {
 
 	# Archlinux packages
 	local arch_pkg_list="ack ag curl devhelp dunst feh firefox git \
-		i3 networkmanager network-manager-applet numlockx pavucontrol \
-		playerctl powertop the_silver_searcher tig tmux gvim wget \
-		xautolock xorg-xrandr xorg-setxkbmap xorg-xbacklight xsel zsh"
+		gvim i3 networkmanager network-manager-applet numlockx \
+		pavucontrol playerctl powertop the_silver_searcher tig tmux \
+		ttf-font-awesome wget xautolock xorg-xrandr xorg-setxkbmap \
+		xorg-xbacklight xsel zsh"
 	local arch_unofficial_pkgs="megasync skypeforlinux-stable-bin spotify \
 		ttf-iosevka-term"
 
