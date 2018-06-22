@@ -1,6 +1,5 @@
 #!/bin/bash
-export $(dbus-launch)
-export BROWSER=chromium
+export BROWSER=firefox
 export WINEPREFIX=~/.wine
 export WINEARCH=win32
 export EDITOR='vim'
