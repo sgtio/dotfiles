@@ -26,7 +26,7 @@ function detect_distro() {
 	[ $# -eq 4 ] || error "detect_distro: Wrong number of args"
 
 	# Archlinux packages
-	local arch_pkg_list="ack ag curl devhelp dunst feh firefox git \
+	local arch_pkg_list="ack ag curl devhelp dmenu dunst feh firefox git \
 		gvim i3 networkmanager network-manager-applet numlockx \
 		pavucontrol playerctl powertop the_silver_searcher tig tmux \
 		ttf-font-awesome wget xautolock xorg-xrandr xorg-setxkbmap \
