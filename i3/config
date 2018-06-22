@@ -10,9 +10,9 @@
 set $mod Mod4
 
 # Set primary and secondary monitors
-set $primary_monitor DVI-I-1
-set $second_monitor HDMI-0
-set $second_monitor_position --right-of
+set $primary_monitor HDMI-1
+set $second_monitor eDP-1
+set $second_monitor_position --left-of
 
 # Workspaces in main display (MOD + [NUMBER])
 set $WS01 "01: "
