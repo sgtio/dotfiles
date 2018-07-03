@@ -1,18 +1,8 @@
-#Created by sejo
-
-# Arrow driven Menu 
-zstyle ':completion:*' menu select
-# Alias completion
-setopt completealiases
-
-# Suggestions 
-#source /usr/share/doc/pkgfile/command-not-found.zsh
-
+# Zsh Theme
+[ -f $HOME/.zshthemerc ] && . $HOME/.zshthemerc
 
 # Aliases
-[ -f $HOME/.aliases ] && . ~/.aliases
+[ -r $HOME/.aliases ] && . $HOME/.aliases
 
 # Environment
-[ -f $HOME/.environment ] && . ~/.environment
-
-
+[ -r $HOME/.environment ] && . $HOME/.environment

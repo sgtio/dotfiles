@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias python='python2'
 alias ls='ls -F --color --quoting-style=escape'
 alias cal='ncal -Mwb -B1 -A1'
 alias tags='ctags -R -f ./tags'
@@ -36,7 +36,6 @@ function rbg() {
 	disown %2
 }
 
-
 function obg() {
 	if [ -z $1 ]; then
 		echo "ERROR: No arguments supplied!"
@@ -48,5 +47,3 @@ function obg() {
 	eval xdg-open "$@" 2>&1 > /tmp/obg.log &
 	disown %2
 }
-
-

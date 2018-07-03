@@ -1,4 +1,12 @@
-#!/bin/bash
+#!/bin/sh
+
+# Set the language environment
+export LANG=en_US.UTF-8
+
+# Add interesting locations to PATH
+export PATH="$PATH:$HOME/.local/bin"
+
+# Default programs
 export BROWSER=firefox
 export WINEPREFIX=~/.wine
 export WINEARCH=win32
@@ -7,7 +15,7 @@ export DIFFPROG='vimdiff'
 export SWT_GTK3=1
 export TERM=st-256color
 
-#LS settings
+# LS settings
 export LS_COLORS_THEMES_ROOTDIR=~/.dircolors
 export LS_COLORS_THEME=$LS_COLORS_THEMES_ROOTDIR/dircolors.ansi-dark
 
@@ -27,8 +35,5 @@ export LESS_TERMCAP_so=$(printf "\e[0;37;102m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[4;32m")
 
-# GCC colorize output
+# GCC settings
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Set the language variable
-export LANG=en_US.UTF-8
