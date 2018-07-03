@@ -121,7 +121,7 @@ function set_configuration() {
 	[ -e $HOME/.zshrc ] && do_backup $HOME/.zshrc
 	[ -e $HOME/.aliases ] && do_backup $HOME/.aliases
 	[ -e $HOME/.environment ] && do_backup $HOME/.environment
-	ln -s $dotfiles/zsh/zshrc $HOME/.zshrc
+	cat $dotfiles/zsh/zshrc $HOME/.zshrc.bak > $HOME/.zshrc
 	ln -s $dotfiles/zsh/aliases $HOME/.aliases
 	ln -s $dotfiles/zsh/environment $HOME/.environment
 
