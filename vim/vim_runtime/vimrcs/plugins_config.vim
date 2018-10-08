@@ -50,7 +50,7 @@ call dein#begin(expand('~/.vim_runtime/bundle'))
 call dein#add('Shougo/dein.vim')
 
 " Begin list of plugins:
-call dein#add('altercation/vim-colors-solarized.git')
+call dein#add('arcticicestudio/nord-vim')
 call dein#add('jlanzarotta/bufexplorer')
 call dein#add('scrooloose/nerdtree')
 call dein#add('terryma/vim-multiple-cursors')
@@ -95,11 +95,11 @@ let g:multi_cursor_next_key="\<C-s>"
 " => lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-            \ 'colorscheme': 'solarized',
+            \ 'colorscheme': 'nord',
             \ }
 
 let g:lightline = {
-            \ 'colorscheme': 'solarized',
+            \ 'colorscheme': 'nord',
             \ 'active': {
             \   'left': [ ['mode', 'paste'],
             \             ['fugitive', 'readonly', 'filename', 'modified'] ],
