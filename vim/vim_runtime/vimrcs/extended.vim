@@ -53,8 +53,6 @@ set guioptions-=l
 set guioptions-=L
 
 " Colorscheme
-set background=dark
-
 try
     let g:solarized_termcolors=16
     let g:solarized_visibility="normal"
