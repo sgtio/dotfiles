@@ -1,5 +1,19 @@
-# Zsh Theme
-[ -f $HOME/.zshthemerc ] && . $HOME/.zshthemerc
+# Zsh configuration file. It requires the installation of oh-my-zsh, and the
+# content of this file should be sourced from the main .zshrc
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Arrow driven Menu 
+zstyle ':completion:*' menu select
+# Alias completion
+setopt completealiases
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+[ -f $HOME/.zshthemerc ] && . ~/.zshthemerc
 
 # Aliases
 [ -r $HOME/.aliases ] && . $HOME/.aliases
