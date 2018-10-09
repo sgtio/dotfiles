@@ -245,35 +245,49 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-## color defines for solarized styled i3
+# Color definition for Nord palette
+set $nord0    #2E3440
+set $nord1    #3B4252
+set $nord2    #434C5E
+set $nord3    #4C566A
+set $nord4    #D8DEE9
+set $nord5    #E5E9F0
+set $nord6    #ECEFF4
+set $nord7    #8FBCBB
+set $nord8    #88C0D0
+set $nord9    #81A1C1
+set $nord10   #5E81AC
+set $nord11   #BF616A
+set $nord12   #D08770
+set $nord13   #EBCB8B
+set $nord14   #A3BE8C
+set $nord15   #B48EAD
 
-## solarized accents
-set $yellow   #b58900
-set $orange   #cb4b16
-set $red      #dc322f
-set $magenta  #d33682
-set $violet   #6c71c4
-set $blue     #268bd2
-set $cyan     #2aa198
-set $green    #859900
-
-## solarized dark
-set $base03   #002b36
-set $base02   #073642
-set $base01   #586e75
-set $base00   #657b83
-set $base10   #839496
-set $base11   #93a1a1
-set $base12   #eee8d5
-set $base13   #fdf6e3
-set $custom   #1c5766
-
+# Terminal palette definition
+set $black     #3B4252
+set $red       #BF616A
+set $green     #A3BE8C
+set $yellow    #EBCB8B
+set $blue      #81A1C1
+set $magenta   #B48EAD
+set $cyan      #88C0D0
+set $white     #E5E9F0
+set $brblack   #4C566A
+set $brred     #BF616A
+set $brgreen   #A3BE8C
+set $bryellow  #EBCB8B
+set $brblue    #81A1C1
+set $brmagenta #B48EAD
+set $brcyan    #8FBCBB
+set $brwhite   #ECEFF4
+set $defaultfg #D8DEE9
+set $defaultbg #2E3440
 
 # set client theme          border     background  text
-client.focused              $magenta   $magenta    $base03
-client.unfocused            $base02    $base02     $base10
-client.focused_inactive     $base02    $base02     $base10
-client.urgent               $red       $red        $base13
+client.focused              $defaultfg $defaultfg  $defaultbg
+client.unfocused            $defaultbg $defaultbg  $defaultfg
+client.focused_inactive     $nord3     $nord3      $defaultfg
+client.urgent               $nord8     $nord8      $defaultbg
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -285,15 +299,15 @@ bar {
     font pango:Iosevka Term 10
     colors {
         ## Set colors
-        background          $base03
-        statusline          $base10
-        separator           $base01
+        background          $defaultbg
+        statusline          $defaultfg
+        separator           $nord3
 
                             #border    #background    #text
-        focused_workspace   $green     $green         $base03
-        active_workspace    $cyan      $cyan          $base03
-        inactive_workspace  $base01    $base01        $base03
-        urgent_workspace    $red       $red           $base13
+        focused_workspace   $defaultfg $defaultfg     $defaultbg
+        active_workspace    $defaultfg $defaultfg     $defaultbg
+        inactive_workspace  $defaultbg $defaultbg     $defaultfg
+        urgent_workspace    $nord8     $nord8         $defaultbg
     }
 }
 
