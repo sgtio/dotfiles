@@ -150,7 +150,8 @@ function set_configuration() {
 	ln -s $dotfiles/X11/Xmodmap $HOME/.Xmodmap
 	ln -s $dotfiles/X11/Xprofile $HOME/.Xprofile
 	ln -s $dotfiles/X11/Xresources $HOME/.Xresources
-	ln -s $dotfiles/X11/Xresources.d $HOME/.Xresources.d
+	mkdir -p $dotfiles/X11/Xresources.d $HOME/.Xresources.d
+	curl -fsSL "https://raw.githubusercontent.com/arcticicestudio/nord-xresources/develop/src/nord" >$HOME/.Xresources.d/Xresources-nord
 
 	echo " * Setting up ctags"
 	[ -e $HOME/.ctagsrc ] && do_backup $HOME/.ctagsrc

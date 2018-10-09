@@ -1,4 +1,4 @@
-#include ".Xresources.d/Xresources-solarized"
+#include ".Xresources.d/Xresources-nord"
 
 ! Wheel support
 URxvt.secondaryScreen: 1
