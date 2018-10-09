@@ -169,7 +169,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 1 tab == 4 spaces
+" 1 tab == 8 spaces
 set shiftwidth=8
 set tabstop=8
 set softtabstop=0
