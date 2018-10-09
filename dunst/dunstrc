@@ -51,7 +51,6 @@
     # Ignore newlines '\n' in notifications.
     ignore_newline = no
 
-
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
     # The geometry of the message window.
@@ -175,20 +174,19 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#002b36"
-    foreground = "#839496"
+    background = "#2e3440"
+    foreground = "#88c0d0"
     timeout = 10
 
 [urgency_normal]
-    background = "#002b36"
-    foreground = "#b58900"
+    background = "#2e3440"
+    foreground = "#d8dee9"
     timeout = 10
 
 [urgency_critical]
-    background = "#dc322f"
-    foreground = "#002b36"
+    background = "#d8dee9"
+    foreground = "#2e3440"
     timeout = 0
-
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
