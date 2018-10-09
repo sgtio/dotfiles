@@ -16,11 +16,11 @@ export SWT_GTK3=1
 
 # LS settings
 export LS_COLORS_THEMES_ROOTDIR=~/.dircolors
-export LS_COLORS_THEME=$LS_COLORS_THEMES_ROOTDIR/dircolors.ansi-dark
+export LS_COLORS_THEME=$LS_COLORS_THEMES_ROOTDIR/dircolors.nord
 
 if [ -f $LS_COLORS_THEME ];
 then
-    eval `dircolors $LS_COLORS_THEME`
+	eval $(dircolors $LS_COLORS_THEME)
 fi
 
 # LESS settings

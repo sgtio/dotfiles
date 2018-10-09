@@ -121,9 +121,12 @@ function set_configuration() {
 	[ -e $HOME/.zshrc ] && do_backup $HOME/.zshrc
 	[ -e $HOME/.aliases ] && do_backup $HOME/.aliases
 	[ -e $HOME/.environment ] && do_backup $HOME/.environment
+	[ -d $HOME/.dircolors ] && do_backup $HOME/.dircolors
 	cat $dotfiles/zsh/zshrc $HOME/.zshrc.bak > $HOME/.zshrc
 	ln -s $dotfiles/zsh/aliases $HOME/.aliases
 	ln -s $dotfiles/zsh/environment $HOME/.environment
+	mkdir -p $HOME/.dircolors
+	curl -fsSL https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors >$HOME/.dircolors/dircolors.nord
 
 	echo " * Setting up vim"
 	[ -e $HOME/.vimrc ] && do_backup $HOME/.vimrc
