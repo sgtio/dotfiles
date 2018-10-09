@@ -136,7 +136,10 @@ function set_configuration() {
 
 	echo " * Setting up tmux"
 	[ -e $HOME/.tmux.conf ] && do_backup $HOME/.tmux.conf
+	[ -d $HOME/.tmux] && do_backup $HOME/.tmux
 	ln -s $dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+	mkdir -p $HOME/.tmux/themes
+	git clone "https://github.com/arcticicestudio/nord-tmux" ~/.tmux/themes/nord-tmux
 
 	echo " * Setting up tig"
 	[ -e $HOME/.tigrc ] && do_backup $HOME/.tigrc
