@@ -61,7 +61,7 @@ function install_pkg() {
 	command -v sudo 2>&1 >/dev/null || {
 		echo "Installing sudo"
 		su -c "$_pkg_mgr $_pkg_install sudo"
-		su -c "usermod -a -G sudo $USER"
+		su -c "/usr/sbin/usermod -a -G sudo $USER"
 		echo "Sudo installed. Please log out and log in again, and restart the script"
 		exit 0
 	}
@@ -184,6 +184,13 @@ function set_configuration() {
 	git config --global alias.co checkout
 	git config --global alias.ci commit
 	git config --global alias.st status
+
+	echo " * Setting up mutt"
+	[ -e $HOME/.muttrc ] && do_backup $HOME/.muttrc
+	[ -d $HOME/.mutt ] && do_backup $HOME/.mutt
+	ln -s $dotfiles/mutt/muttrc $HOME/.muttrc
+	mkdir -p $HOME/.mutt
+	cp $dotfiles/mutt/* $HOME/.mutt
 
 }
 
