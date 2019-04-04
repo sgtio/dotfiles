@@ -9,8 +9,8 @@ status
 )
 
 # Define color for context display
-BULLETTRAIN_CONTEXT_BG=blue
-BULLETTRAIN_CONTEXT_FG=default
+BULLETTRAIN_CONTEXT_BG=8
+BULLETTRAIN_CONTEXT_FG=white
 
 # Define color for dir
 BULLETTRAIN_DIR_BG=cyan
