@@ -1,27 +1,27 @@
 ZSH_THEME="bullet-train"
 
-# Define prompt items and order
 BULLETTRAIN_PROMPT_ORDER=(
-context
-dir
-git
-status
-)
+	context
+	dir
+	time
+	git
+	status
+	)
 
-# Define color for context display
-BULLETTRAIN_CONTEXT_BG=8
-BULLETTRAIN_CONTEXT_FG=white
+BULLETTRAIN_STATUS_EXIT_SHOW=true
+BULLETTRAIN_STATUS_BG=green
+BULLETTRAIN_STATUS_ERROR_BG=red
+BULLETTRAIN_STATUS_FG=black
 
-# Define color for dir
-BULLETTRAIN_DIR_BG=cyan
+BULLETTRAIN_CONTEXT_BG="#D8DEE9" # nord4
+BULLETTRAIN_CONTEXT_FG=black
+
+BULLETTRAIN_DIR_BG=blue
 BULLETTRAIN_DIR_FG=black
-BULLETTRAIN_DIR_EXTENDED=2
 
-# Define color for git status
-BULLETTRAIN_GIT_BG=white
+BULLETTRAIN_GIT_BG=11 # bryellow
 BULLETTRAIN_GIT_FG=black
 
-# Define color for command execution status
-BULLETTRAIN_STATUS_EXIT_SHOW=true
-BULLETTRAIN_STATUS_BG=blue
-BULLETTRAIN_STATUS_FG=white
+BULLETTRAIN_TIME_BG=black
+BULLETTRAIN_TIME_FG=white
+

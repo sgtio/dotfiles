@@ -96,6 +96,8 @@ install_src() {
 		echo "Installing ohmyzsh"
 		curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh >$TMP_DIR/zsh-installer.sh &&
 			sh $TMP_DIR/zsh-installer.sh
+		echo "Downloading bullet-train"
+		wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -O $HOME/oh-my-zsh/custom/themes/bullet-train.zsh-theme
 	}
 
 	command -v st 2>&1 >/dev/null || {
@@ -140,10 +142,12 @@ set_configuration() {
 	[ -e $HOME/.zshrc ] && do_backup $HOME/.zshrc
 	[ -e $HOME/.aliases ] && do_backup $HOME/.aliases
 	[ -e $HOME/.environment ] && do_backup $HOME/.environment
+	[ -e $HOME/.zshthemerc] && do_backup $HOME/.zshthemerc
 	[ -d $HOME/.dircolors ] && do_backup $HOME/.dircolors
 	cat $dotfiles/zsh/zshrc $HOME/.zshrc.bak > $HOME/.zshrc
 	ln -s $dotfiles/zsh/aliases $HOME/.aliases
 	ln -s $dotfiles/zsh/environment $HOME/.environment
+	ln -s $dotfiles/zsh/zshthemerc $HOME/.zshthemerc
 	mkdir -p $HOME/.dircolors
 	curl -fsSL https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors >$HOME/.dircolors/dircolors.nord
 
