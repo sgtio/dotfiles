@@ -1,11 +1,11 @@
 #!/bin/sh
 
-function error {
+error() {
 	printf " *** Error:\n *** $@\n"
 	exit 1
 }
 
-function print_header {
+print_header() {
 	[ $# -ge 1 ] || error "print_header: At least one argument required"
 
 	printf "\n===============================================\n"
@@ -13,7 +13,7 @@ function print_header {
 	echo "==============================================="
 }
 
-function do_backup() {
+do_backup() {
 	[ $# -eq 1 ] || error "do_backup: Wrong number of arguments"
 
 	local target=$1
@@ -22,7 +22,7 @@ function do_backup() {
 	mv $target $target.bak || error "do_backup: Could not create backup"
 }
 
-function detect_distro() {
+detect_distro() {
 	[ $# -eq 4 ] || error "detect_distro: Wrong number of args"
 
 	# Archlinux packages
@@ -33,6 +33,14 @@ function detect_distro() {
 		xorg-xbacklight xsel zsh"
 	local arch_unofficial_pkgs="megasync skypeforlinux-stable-bin spotify \
 		ttf-iosevka-term"
+
+	# Debian packages
+	local debian_pkg_list="ack curl devhelp dmenu dunst feh firefox-esr \
+		libfontconfig-dev fonts-font-awesome git i3 libfreetype6-dev \
+		libxft-dev libx11-dev network-manager numlockx \
+		pavucontrol playerctl powertop silversearcher-ag tig tmux \
+		vim-gtk3 wget xautolock x11-xserver-utils x11-xkb-utils \
+		xbacklight xsel zsh"
 
 	_pkg_mgr_var=$1
 	_pkg_mgr_inst_var=$2
@@ -48,10 +56,21 @@ function detect_distro() {
 		return 0
 	}
 
-	return 1
+	command -v apt 2>&1 >/dev/null && {
+		eval $_pkg_mgr_var=apt-get
+		eval $_pkg_mgr_inst_var=\"install -y\"
+		eval $_pkg_list_var="\$debian_pkg_list"
+
+		echo "Distribution detected: Debian"
+		eval $_unofficial_pkgs="\$debian_unofficial_pkgs"
+
+		return 0
+	}
+
+    return 1
 }
 
-function install_pkg() {
+install_pkg() {
 	[ $# -eq 3 ] || error "install_pkg: Wrong number of arguments"
 
 	local _pkg_mgr=$1
@@ -72,7 +91,7 @@ function install_pkg() {
 	eval sudo $_pkg_mgr $_pkg_mgr_install $_pkg_list
 	}
 
-function install_src() {
+install_src() {
 	[ -d $HOME/.oh-my-zsh ] || {
 		echo "Installing ohmyzsh"
 		curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh >$TMP_DIR/zsh-installer.sh &&
@@ -80,6 +99,7 @@ function install_src() {
 	}
 
 	command -v st 2>&1 >/dev/null || {
+		local dotfiles=$HOME/dotfiles
 		local src_dir=$HOME/src
 		local st_version=0.8.1
 		local st_src=$src_dir/st-$st_version
@@ -99,9 +119,8 @@ function install_src() {
 		echo "    - No bold colors"
 		wget -q -O $st_src/no-bold-colors.diff https://st.suckless.org/patches/solarized/st-no_bold_colors-$st_version.diff
 		patch -s -d $st_src -i $st_src/no-bold-colors.diff
-		echo "    - Solarized"
-		wget -q -O $st_src/solarized.diff https://st.suckless.org/patches/solarized/st-solarized-both-$st_version.diff
-		patch -s -d $st_src -i $st_src/solarized.diff
+		echo " * Setting custom configuration"
+		cp $dotfiles/st/config.h $st_src
 		echo " * Compiling the source code"
 		make -s -C $st_src
 		echo " * Installing st"
@@ -109,7 +128,7 @@ function install_src() {
 	}
 }
 
-function set_configuration() {
+set_configuration() {
 	local dotfiles=$HOME/dotfiles
 
 	[ -d $dotfiles ] || {
@@ -194,17 +213,18 @@ function set_configuration() {
 
 }
 
-function deploy() {
+deploy() {
 	echo "Deploying new installation..."
 	#echo "You will be prompted to install different configurations"
 	#echo "Alternatively, run this script with -a or --all to get everything
 	#echo "installed"
 
-	print_header "Determining distribution (only Archlinux supported so far)"
+	print_header "Determining distribution (only Archlinux and Debian supported so far)"
 	local pkg_mgr=""
 	local pkg_mgr_install=""
 	local pkg_list=""
-	detect_distro pkg_mgr pkg_mgr_install pkg_list unofficial_pkgs
+	detect_distro pkg_mgr pkg_mgr_install pkg_list unofficial_pkgs ||
+		error "Could not detect distribution"
 
 	print_header "Installing dependencies through $pkg_mgr"
 	install_pkg $pkg_mgr "$pkg_mgr_install" "$pkg_list"
