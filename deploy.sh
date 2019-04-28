@@ -40,7 +40,7 @@ detect_distro() {
 		libxft-dev libx11-dev network-manager numlockx \
 		pavucontrol playerctl powertop silversearcher-ag tig tmux \
 		vim-gtk3 wget xautolock x11-xserver-utils x11-xkb-utils \
-		xbacklight xsel zsh"
+		xbacklight xclip xsel zsh"
 
 	_pkg_mgr_var=$1
 	_pkg_mgr_inst_var=$2
