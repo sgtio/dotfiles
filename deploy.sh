@@ -35,12 +35,12 @@ detect_distro() {
 		ttf-iosevka-term"
 
 	# Debian packages
-	local debian_pkg_list="ack curl devhelp dmenu dunst feh firefox-esr \
-		libfontconfig-dev fonts-font-awesome git i3 libfreetype6-dev \
-		libxft-dev libx11-dev network-manager numlockx \
-		pavucontrol playerctl powertop silversearcher-ag tig tmux \
-		vim-gtk3 wget xautolock x11-xserver-utils x11-xkb-utils \
-		xbacklight xclip xsel zsh"
+	local debian_pkg_list="ack curl devhelp dmenu dunst exhuberant-ctags feh
+		firefox-esr libfontconfig-dev fonts-font-awesome git i3 \
+		libfreetype6-dev libxft-dev libx11-dev network-manager \
+		numlockx pavucontrol playerctl powertop silversearcher-ag tig \
+		tmux vim-gtk3 wget xautolock x11-xserver-utils \
+		x11-xkb-utils xbacklight xclip xsel zsh"
 
 	_pkg_mgr_var=$1
 	_pkg_mgr_inst_var=$2
@@ -97,7 +97,7 @@ install_src() {
 		curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh >$TMP_DIR/zsh-installer.sh &&
 			sh $TMP_DIR/zsh-installer.sh
 		echo "Downloading bullet-train"
-		wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -O $HOME/oh-my-zsh/custom/themes/bullet-train.zsh-theme
+		wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -O $HOME/.oh-my-zsh/custom/themes/bullet-train.zsh-theme
 	}
 
 	command -v st 2>&1 >/dev/null || {
@@ -184,7 +184,7 @@ set_configuration() {
 
 	echo " * Setting up ctags"
 	[ -e $HOME/.ctagsrc ] && do_backup $HOME/.ctagsrc
-	ln -s $dotfiles/ctags/ctagsrc $HOME/.ctagsrc
+	ln -s $dotfiles/ctags/ctagsrc $HOME/.ctags
 
 	echo " * Setting up dunst"
 	[ -e $HOME/.dunstrc ] && do_backup $HOME/.dunstrc
@@ -214,7 +214,6 @@ set_configuration() {
 	ln -s $dotfiles/mutt/muttrc $HOME/.muttrc
 	mkdir -p $HOME/.mutt
 	cp $dotfiles/mutt/* $HOME/.mutt
-
 }
 
 deploy() {
