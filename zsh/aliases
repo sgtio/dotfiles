@@ -1,9 +1,96 @@
 #!/bin/sh
 
+# Utility functions
+function get_lazy_ipv4() {
+	# Usage:
+	# get_lazy_ipv4 <input> <variable_name>
+	# TODO: Do not assume default_mask and retrieve it using ip
+	local lazy_ipv4=$1
+	local input_size=$(echo $lazy_ipv4| wc -m)
+	local default_mask=192.168.0.
+
+	[ $input_size -le 4 ] || {
+		eval $2=\$lazy_ipv4
+		return 0
+	}
+
+	local ipv4_suffix=$(printf "%u" $lazy_ipv4)
+
+	eval $2=\$default_mask\$ipv4_suffix
+}
+
+# General purpose aliases
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ls='ls -F --color --quoting-style=escape'
 alias cal='ncal -Mwb -B1 -A1'
-alias tags='ctags -R -f ./tags'
+alias tags='ctags -R '
+
+# Yocto related aliases
+alias bb='bitbake'
+alias dt='devtool'
+alias dtm='devtool modify -w'
+
+function get_cvp_root_path() {
+	# Usage:
+	# get_cvp_root_path <variable_name>
+
+	local cvp_root=$(echo $PWD | grep -E -o "$HOME/work/cfp" -)
+	[ -z $cvp_root ] || {
+		cvp_root=$(echo $PWD | grep -E -o "$HOME/work/cfp/[^/]*" -)
+	}
+
+	eval $1=\$cvp_root
+}
+
+# Development related aliases
+function bbr {
+	bitbake-layers show-recipes | grep $1
+}
+
+function dtd {
+	local user=root
+	local target_ip=192.168.0.100
+
+	[ -n $1 ] || {
+		echo "no package specified!"
+		echo "  Usage: $0 package_name <IP> <user>"
+	}
+
+	[ -z $2 ] || get_lazy_ipv4 $2 target_ip
+	[ -z $3 ] || user=$3
+
+	devtool deploy-target $1 $user@$target_ip
+}
+
+function dtre {
+	local no_clean=''
+
+	if [ -z $1 ]; then
+		echo "No arguments supplied!"
+		devtool reset -h
+	fi
+
+	while getopts ":a:h:n:" opt; do
+		case $opt in
+			a)
+				devtool reset -a
+				exit 0
+				;;
+			h)
+				devtool reset -h
+				exit 0
+				;;
+			n)
+				no_clean='-n'
+				;;
+		esac
+		shift
+	done
+
+	for pkg in "$@"; do
+		devtool reset $no_clean $pkg
+	done
+}
 
 function com {
 	local com_log=/tmp/picocom.log
@@ -11,9 +98,8 @@ function com {
 	if [ -z $1 ]; then
 		sudo picocom -b 115200 -e b /dev/ttyUSB0 | tee $com_log
 	else
-		sudo picocom -b 115200 -e b "$@" | tee $com_log
+		sudo picocom -b 115200 -e b "/dev/ttyUSB$@" | tee $com_log
 	fi
-
 }
 
 function pilog() {
@@ -47,3 +133,30 @@ function obg() {
 	eval xdg-open "$@" 2>&1 > /tmp/obg.log &
 	disown %2
 }
+
+function dev {
+	local user=root
+	local target_ip=192.168.0.100
+
+	[ -z $1 ] || {
+		get_lazy_ipv4 $1 target_ip
+		echo "IP specified manually. Using $target_ip"
+	}
+
+	[ -z $2 ] || user=$2
+
+	ssh -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "$user"@$target_ip
+}
+
+function pong {
+	local target_ip=192.168.0.100
+	[ -z $1 ] || {
+		get_lazy_ipv4 $1 target_ip
+			echo "IP specified manually. Using $target_ip"
+		}
+
+	ping $target_ip
+}
+
+
+[ ! -r $HOME/.aliases.local ] || . $HOME/.aliases.local
