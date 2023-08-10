@@ -2,19 +2,19 @@
 " File name: extended.vim
 "
 " File description: Extended settings
-" 
 "
-" Maintainer: 
+"
+" Maintainer:
 "       Sergio Ruiz
 "       https://sejoruiz.github.io - sejoruiz@gmail.com
 "
-" Version: 
+" Version:
 "       0.1 - 12/07/2016 "
 "
 " Sections:
 "    -> GUI Related
 "    -> Fast editing and reloading of vimrc configs
-"    -> Turn persistent undo on 
+"    -> Turn persistent undo on
 "    -> Command mode related
 "    -> Parenthesis/bracket
 "    -> General abbreviations
@@ -58,12 +58,16 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 try
+    " Nord specific vars. Unused, but may want to come back to Nord theme
     let g:nord_italic = 1
     let g:nord_italic_comments = 1
     let g:nord_underline = 1
     let g:nord_uniform_status_lines = 1
     let g:nord_cursor_line_number_background = 1
-    colorscheme nord
+
+    " Set light background and theme
+    set background=light
+    colorscheme PaperColor
 catch
 endtry
 
@@ -87,7 +91,7 @@ autocmd! bufwritepost vimrc source ~/.vim_runtime/my_configs.vim
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undodir=~/.tmp/vim/undodir
     set undofile
 catch
 endtry

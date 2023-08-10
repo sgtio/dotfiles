@@ -1,21 +1,22 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" File name: extended.vim
+" File name: filetypes.vim
 "
-" File description: Extended settings
-" 
+" File description: File type specific settings
 "
-" Maintainer: 
+"
+" Maintainer:
 "       Sergio Ruiz
 "       https://sejoruiz.github.io - sejoruiz@gmail.com
 "
-" Version: 
+" Version:
 "       0.1 - 12/07/2016
 "
 "
 " Sections:
 "    -> Python
+"    -> Bitbake
 "    -> Javascript
-"    -> CoffeScript
+"    -> Git
 "
 "
 " Acknowledgements: https://github.com/amix/vimrc
@@ -33,16 +34,27 @@ au BufNewFile,BufRead *.mako set ft=mako
 
 au FileType python map <buffer> F :set foldmethod=indent<cr>
 
-au FileType python map <buffer> <leader>1 /class 
-au FileType python map <buffer> <leader>2 /def 
-au FileType python map <buffer> <leader>C ?class 
-au FileType python map <buffer> <leader>D ?def 
+au FileType python map <buffer> <leader>1 /class
+au FileType python map <buffer> <leader>2 /def
+au FileType python map <buffer> <leader>C ?class
+au FileType python map <buffer> <leader>D ?def
+au FileType python set textwidth=131
+au FileType python set expandtab
+au FileType python set shiftwidth=4
+au FileType python set tabstop=4
+au FileType python set softtabstop=0
+
 
 """""""""""""""""""""""""""""""
 " => Bitbake section
 """"""""""""""""""""""""""""""
 au BufNewFile,BufRead *.bb set filetype=bitbake
 au BufNewFile,BufRead *.bbappend set filetype=bitbake
+au FileType bitbake set textwidth=131
+au FileType python set noexpandtab
+au FileType python set shiftwidth=4
+au FileType python set tabstop=4
+au FileType python set softtabstop=0
 
 """"""""""""""""""""""""""""""
 " => JavaScript section

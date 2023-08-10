@@ -13,7 +13,6 @@
 "
 "
 " Sections:
-"    -> Dein
 "    -> bufExplorer
 "    -> MRU plugin
 "    -> YankStack
@@ -31,37 +30,6 @@
 " Acknowledgements: https://github.com/amix/vimrc
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" With a map leader it's possible to do extra key combinations
-let mapleader = ","
-let g:mapleader = ","
-
-""""""""""""""""""""""""""""""
-" => Dein
-""""""""""""""""""""""""""""""
-if &compatible
-    set nocompatible
-endif
-set runtimepath+=~/.vim_runtime/bundle/repos/github.com/Shougo/dein.vim
-
-call dein#begin(expand('~/.vim_runtime/bundle'))
-
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
-
-" Begin list of plugins:
-call dein#add('arcticicestudio/nord-vim')
-call dein#add('jlanzarotta/bufexplorer')
-call dein#add('scrooloose/nerdtree')
-call dein#add('terryma/vim-multiple-cursors')
-call dein#add('itchyny/lightline.vim')
-call dein#add('mileszs/ack.vim')
-call dein#add('christoomey/vim-tmux-navigator')
-call dein#add('airblade/vim-gitgutter')
-call dein#add('tpope/vim-fugitive')
-" End list of plugins
-
-call dein#end()
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -87,19 +55,14 @@ map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-multiple-cursors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:multi_cursor_next_key="\<C-s>"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-            \ 'colorscheme': 'nord',
+            \ 'colorscheme': 'PaperColor',
             \ }
 
 let g:lightline = {
-            \ 'colorscheme': 'nord',
+            \ 'colorscheme': 'PaperColor',
             \ 'active': {
             \   'left': [ ['mode', 'paste'],
             \             ['fugitive', 'readonly', 'filename', 'modified'] ],
@@ -138,6 +101,10 @@ cnoreabbrev ag Ack!
 cnoreabbrev aG Ack!
 cnoreabbrev Ag Ack!
 cnoreabbrev AG Ack!
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tmux.nvim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-TMUX
