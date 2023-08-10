@@ -65,13 +65,13 @@ let g:lightline = {
             \ 'colorscheme': 'PaperColor',
             \ 'active': {
             \   'left': [ ['mode', 'paste'],
-            \             ['fugitive', 'readonly', 'filename', 'modified'] ],
+            \             ['readonly', 'filename', 'modified', 'gitstatus'] ],
             \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'] ]
             \ },
             \ 'component': {
             \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
             \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-            \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+            \   'gitstatus': '%{exists("*FugitiveHead()")?FugitiveHead():""}'
             \ },
             \ 'component_expand': {
             \   'syntastic': 'SyntasticStatuslineFlag',
@@ -82,7 +82,7 @@ let g:lightline = {
             \ 'component_visible_condition': {
             \   'readonly': '(&filetype!="help"&& &readonly)',
             \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-            \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+            \   'gitstatus': '(exists("*FugitiveHead()") && ""!=FugitiveHead())'
             \ },
             \ 'separator': { 'left': ' ', 'right': ' ' },
             \ 'subseparator': { 'left': ' ', 'right': ' ' }
@@ -117,3 +117,9 @@ cnoreabbrev AG Ack!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => gitsigns.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap [c :Gitsigns prev_hunk<cr>
+nmap ]c :Gitsigns next_hunk<cr>
