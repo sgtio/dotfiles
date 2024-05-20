@@ -30,6 +30,10 @@
 " Acknowledgements: https://github.com/amix/vimrc
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Define the map leader as early in the configuration as possible.
+" With a map leader it's possible to do extra key combinations
+let mapleader = " "
+let g:mapleader = " "
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -123,3 +127,13 @@ cnoreabbrev AG Ack!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap [c :Gitsigns prev_hunk<cr>
 nmap ]c :Gitsigns next_hunk<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Telescope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fc <cmd>lua require('telescope.builtin').git_commits()<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>fv <cmd>lua require('telescope.builtin').builtin.treesitter()<cr>

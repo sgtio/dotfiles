@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 plugins = {
     {"arcticicestudio/nord-vim", lazy = true},
     {"NLKNguyen/papercolor-theme", lazy = false},
-    'itchyny/lightline.vim',
+    {'itchyny/lightline.vim', lazy = false},
     'mileszs/ack.vim',
     {"nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -40,6 +40,11 @@ plugins = {
     {"tpope/vim-fugitive"},
     {"lewis6991/gitsigns.nvim",
         config = function() return require('gitsigns').setup() end
+    },
+    {
+    'nvim-telescope/telescope.nvim', tag = '0.1.6',
+-- or                              , branch = '0.1.x',
+      dependencies = { 'nvim-lua/plenary.nvim' }
     }
 }
 
