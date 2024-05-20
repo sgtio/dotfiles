@@ -9,7 +9,7 @@
 "       https://sejoruiz.github.io - sejoruiz@gmail.com
 "
 " Version:
-"       0.1 - 12/07/2016
+"       1.0 - 17/05/2024
 "
 "
 " Sections:
@@ -60,8 +60,8 @@ set number
 let $LANG='en_US.UTF-8'
 set langmenu=en_US.UTF-8
 
-" Turn on the WiLd menu (command completion)
-set wildmode=longest,list,full
+" Set command completion so that it behaves like a shell
+set wildmode=longest,list:full
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
@@ -113,6 +113,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" Configure File Explorer
+let g:netrw_winsize = 30
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fold settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
