@@ -23,9 +23,10 @@ plugins = {
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
-                ensure_installed = { "c", "lua", "python", "rust", "vim", "vimdoc" },
+                ensure_installed =
+                    { "bash", "c", "lua", "markdown", "python", "rust", "vim", "vimdoc" },
                 sync_install = false,
-                highlight = { enable = false },
+                highlight = { enable = true },
                 indent = { enable = true },
               })
         end
@@ -42,9 +43,11 @@ plugins = {
         config = function() return require('gitsigns').setup() end
     },
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
--- or                              , branch = '0.1.x',
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
       dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+    {
+    'rust-lang/rust.vim'
     }
 }
 
