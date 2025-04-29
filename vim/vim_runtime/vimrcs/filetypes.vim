@@ -26,24 +26,11 @@
 """"""""""""""""""""""""""""""
 " => Python section
 """"""""""""""""""""""""""""""
-let python_highlight_all = 1
-au FileType python syn keyword pythonDecorator True None False self
-
-au BufNewFile,BufRead *.jinja set syntax=htmljinja
-au BufNewFile,BufRead *.mako set ft=mako
-
-au FileType python map <buffer> F :set foldmethod=indent<cr>
-
-au FileType python map <buffer> <leader>1 /class
-au FileType python map <buffer> <leader>2 /def
-au FileType python map <buffer> <leader>C ?class
-au FileType python map <buffer> <leader>D ?def
 au FileType python set textwidth=131
 au FileType python set expandtab
 au FileType python set shiftwidth=4
 au FileType python set tabstop=4
 au FileType python set softtabstop=0
-
 
 """""""""""""""""""""""""""""""
 " => Bitbake section
@@ -61,7 +48,6 @@ au FileType python set softtabstop=0
 """""""""""""""""""""""""""""""
 au FileType javascript setl fen
 au FileType javascript setl nocindent
-
 
 """"""""""""""""""""""""""""""
 " => Git commit section

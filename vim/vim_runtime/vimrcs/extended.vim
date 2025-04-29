@@ -25,37 +25,16 @@
 " Acknowledgements: https://github.com/amix/vimrc
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => GUI related
+" => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set font according to system
-if has("mac") || has("macunix")
-    set gfn=Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
-elseif has("win16") || has("win32")
-    set gfn=Hack:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
-elseif has("gui_gtk3")
-    set gfn=Iosevka\ Term\ 12,Inconsolata\ 13,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11,PowerlineSymbols\ 12
-elseif has("linux")
-    set gfn=Iosevka\ Term\ 12,Inconsolata\ 13,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11,PowerlineSymbols\ 12
-elseif has("unix")
-    set gfn=Monospace\ 12
-endif
+" Enable syntax highlighting
+syntax enable
 
-" Open MacVim in fullscreen mode
-if has("gui_macvim")
-    set fuoptions=maxvert,maxhorz
-    au GUIEnter * set fullscreen
-endif
+set background=light
+set cursorline
 
-" Disable scrollbars
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
-
-" Colorscheme
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
 
 try
     " Nord specific vars. Unused, but may want to come back to Nord theme
@@ -78,6 +57,18 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Options for VIM in GUI mode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set font
+set gfn=Iosevka\ Term\ 12,Inconsolata\ 13,DejaVu\ Sans\ Mono\ 11,Bitstream\ Vera\ Sans\ Mono\ 11,PowerlineSymbols\ 12
+
+" Disable scrollbars in GUI mode
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on

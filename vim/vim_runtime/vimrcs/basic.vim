@@ -35,11 +35,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Define the map leader as space. The map leader must be defined before any
+" mapping is defined
+let mapleader = " "
+let g:mapleader = " "
+
 " Sets how many lines of history VIM has to remember
 set history=500
-
-" Set to auto read when a file is changed from the outside
-set autoread
 
 " Mouse integration with VIM
 set mouse=a
@@ -62,22 +64,20 @@ set langmenu=en_US.UTF-8
 
 " Set command completion so that it behaves like a shell
 set wildmode=longest,list:full
+
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
+" Ignore git and other hidden directories
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 
 "Always show current position
 set ruler
 
 " Height of the command bar
 set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
-set hid
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -88,12 +88,6 @@ set ignorecase
 
 " When searching try to be smart about cases
 set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -115,44 +109,14 @@ set tm=500
 
 " Configure File Explorer
 let g:netrw_winsize = 30
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fold settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Language specific
-let javaScript_fold    = 1    " JavaScript
-let tex_fold_enabled   = 1    " LaTeX
-let r_syntax_folding   = 1    " R
-let sh_fold_enabled    = 1    " sh
-let zsh_fold_enabled   = 1    " Zsh
-let vimsyn_folding     = 'af' " Vim scripts
-let xml_syntax_folding = 1    " XML
-
-" General
-set foldcolumn=1
+" Set folding method but disable folding until it's explicitly enabled
 set foldmethod=syntax
-au BufRead * normal zR
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
-
-set background=light
-set cursorline
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
+set nofoldenable
+" au BufRead * normal zR
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -161,7 +125,6 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -181,12 +144,8 @@ set colorcolumn=+1
 " Use spaces for indentation
 set expandtab
 
-" Be smart when using tabs
-set smarttab
-
 set autoindent "Auto indent
 set smartindent "Smart indent
-set wrap "Wrap lines
 
 " If the files contain any different setting, use it instead.
 set modeline
@@ -226,19 +185,13 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
 " Delete trailing white space on save
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -264,6 +217,7 @@ set list
 
 " Set tag file possible locations
 set tags+=./tags;
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

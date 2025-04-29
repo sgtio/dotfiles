@@ -30,34 +30,6 @@
 " Acknowledgements: https://github.com/amix/vimrc
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Define the map leader as early in the configuration as possible.
-" With a map leader it's possible to do extra key combinations
-let mapleader = " "
-let g:mapleader = " "
-
-""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
-nnoremap <silent> <M-F12> :BufExplorer<CR>
-nnoremap <silent> <F12> :bn<CR>
-nnoremap <silent> <S-F12> :bp<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeWinPos = "left"
-let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -106,22 +78,6 @@ cnoreabbrev aG Ack!
 cnoreabbrev Ag Ack!
 cnoreabbrev AG Ack!
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => tmux.nvim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-TMUX
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => gitgutter
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fugitive
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => gitsigns.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
