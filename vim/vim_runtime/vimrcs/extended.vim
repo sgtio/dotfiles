@@ -33,6 +33,10 @@ syntax enable
 set background=light
 set cursorline
 
+" Force 24-bit RGB color in TUI. For some reason, nvim does not detect this
+" correctly when running over SSH on a TMUX session
+set termguicolors
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 

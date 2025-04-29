@@ -35,10 +35,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
             \ 'colorscheme': 'PaperColor',
-            \ }
-
-let g:lightline = {
-            \ 'colorscheme': 'PaperColor',
             \ 'active': {
             \   'left': [ ['mode', 'paste'],
             \             ['readonly', 'filename', 'modified', 'gitstatus'] ],
@@ -65,7 +61,6 @@ let g:lightline = {
             \ }
 
 function! s:syntastic()
-    SyntasticCheck
     call lightline#update()
 endfunction
 
@@ -92,4 +87,3 @@ nnoremap <leader>fc <cmd>lua require('telescope.builtin').git_commits()<cr>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-nnoremap <leader>fv <cmd>lua require('telescope.builtin').builtin.treesitter()<cr>
