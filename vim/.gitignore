@@ -7,5 +7,8 @@ temp_dirs/
 .*
 *~
 
+# Ignore lazy plugin manager config
+lazy-lock.json
+
 # Include .gitignore in the repository
 !.gitignore
