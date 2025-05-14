@@ -1,3 +1,7 @@
+# Fix issue with git not showing
+# https://github.com/caiogondim/bullet-train.zsh/issues/348
+zstyle ':omz:alpha:lib:git' async-prompt no
+
 ZSH_THEME="bullet-train"
 
 BULLETTRAIN_PROMPT_ORDER=(
