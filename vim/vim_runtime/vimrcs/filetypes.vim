@@ -38,10 +38,10 @@ au FileType python set softtabstop=0
 au BufNewFile,BufRead *.bb set filetype=bitbake
 au BufNewFile,BufRead *.bbappend set filetype=bitbake
 au FileType bitbake set textwidth=80
-au FileType python set noexpandtab
-au FileType python set shiftwidth=4
-au FileType python set tabstop=4
-au FileType python set softtabstop=0
+au FileType bitbake set noexpandtab
+au FileType bitbake set shiftwidth=4
+au FileType bitbake set tabstop=4
+au FileType bitbake set softtabstop=0
 
 """"""""""""""""""""""""""""""
 " => JavaScript section

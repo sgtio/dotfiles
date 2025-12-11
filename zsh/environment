@@ -37,4 +37,8 @@ export LESS_TERMCAP_us=$(printf "\e[4;32m")
 # GCC settings
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Source the cargo env
+[ ! -r $HOME/.cargo/env ] || . $HOME/.cargo/env
+
+# Source the local environment
 [ ! -r $HOME/.environment.local ] || . $HOME/.environment.local

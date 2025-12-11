@@ -70,6 +70,9 @@ set wildignore=*.o,*~,*.pyc
 " Ignore git and other hidden directories
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
+" Set completion to work nicely with Copilot chat autocomplete
+set completeopt+=noinsert,noselect,popup
+
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 

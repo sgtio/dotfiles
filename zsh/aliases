@@ -34,9 +34,9 @@ function get_cvp_root_path() {
 	# Usage:
 	# get_cvp_root_path <variable_name>
 
-	local cvp_root=$(echo $PWD | grep -E -o "$HOME/work/cfp" -)
+	local cvp_root=$(echo $PWD | grep -E -o "/work/cfp" -)
 	[ -z $cvp_root ] || {
-		cvp_root=$(echo $PWD | grep -E -o "$HOME/work/cfp/[^/]*" -)
+		cvp_root=$(echo $PWD | grep -E -o ".*/work/cfp/[^/]*" -)
 	}
 
 	eval $1=\$cvp_root
