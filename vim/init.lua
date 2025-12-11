@@ -93,7 +93,7 @@ vim.cmd.source(vimrc)
 vim.lsp.enable({
     'pyright',
     'clangd',
-    'rust-analyzer',
+    'rust_analyzer',
 })
 
 vim.g.copilot_no_tab_map = true -- Enable when using CopilotChat
